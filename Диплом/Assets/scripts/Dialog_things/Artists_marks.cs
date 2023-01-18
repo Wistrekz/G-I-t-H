@@ -7,4 +7,9 @@ public class Artists_marks : MonoBehaviour
     public string[,] Artists_colors;
 
     public static string Namemark_Symbol = "*{KL::'}";
+
+    private void Start()
+    {
+        
+    }
 }

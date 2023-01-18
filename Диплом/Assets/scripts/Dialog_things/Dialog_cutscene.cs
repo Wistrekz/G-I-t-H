@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Windows.Media;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,8 @@ public class Dialog_cutscene : MonoBehaviour
     public string path, lang_mark;
     public string[] players_scene;
 
+    public Animator animator;
+
     private string[] replics;
     private bool inTrigger;
     private int number;
@@ -22,7 +25,7 @@ public class Dialog_cutscene : MonoBehaviour
     public void Start()
     {
         Debug.Log(gameObject.name);
-        replics = Dictionary_files.GetLangDictionary_players_color(path);
+        replics = Dictionary_files.GetLangDictionary(path);
     }
 
 
@@ -44,6 +47,7 @@ public class Dialog_cutscene : MonoBehaviour
         replic_name = replics[rep_num].Split(new string[] { Artists_marks.Namemark_Symbol}, StringSplitOptions.None);
         panel.SetActive(true);
         nametext.text = replic_name[0];
+
         number = 0;
         inTrigger = true;
         inscript = true;
@@ -52,6 +56,7 @@ public class Dialog_cutscene : MonoBehaviour
 
     public void DisplayNextReplics()
     {
+        replic_name = replics[rep_num].Split(new string[] { Artists_marks.Namemark_Symbol }, StringSplitOptions.None);
         if (number == replics.Length)
         {
             Invoke(nameof(EndDialog), 0.1f);
@@ -60,8 +65,12 @@ public class Dialog_cutscene : MonoBehaviour
         }
         else
         {
-            string replic = replics[number];
-            dialogtext.text = replic;
+            nametext.text = replic_name[0];
+            UnityEngine.Color color;
+            ColorUtility.TryParseHtmlString(Dictionary_files.GetLangDictionary_FromNameToColor("Assets/Languages_/People_color.txt", nametext.text), out color);
+            nametext.color = color;
+            dialogtext.text = replic_name[1];
+            dialogtext.color = color;
             number++;
         }
         /*
@@ -86,6 +95,7 @@ public class Dialog_cutscene : MonoBehaviour
         inTrigger = false;
         inscript = false;
         rep_num = 0;
+        animator.SetBool("IsTextEnd", true);
     }
 
     /*

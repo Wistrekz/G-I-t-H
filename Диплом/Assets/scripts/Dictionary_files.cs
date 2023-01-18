@@ -9,9 +9,7 @@ using UnityEngine;
 public class Dictionary_files : MonoBehaviour
 {
     private static readonly List<string> Replics = new List<string>();
-    private static string[] Replics_mas2;
     private static string[] Replics_mas1;
-    private static Artists_marks actors;
 
     public static string[] GetLangDictionary(string langFilepath, string obj_name)
     {
@@ -31,7 +29,7 @@ public class Dictionary_files : MonoBehaviour
         return Replics_mas1;
     }
 
-    public static string[] GetLangDictionary_players_color(string langFilepath)
+    public static string[] GetLangDictionary(string langFilepath)
     {
         XmlDocument xmlDoc = new XmlDocument();
         xmlDoc.Load(langFilepath);
@@ -44,5 +42,19 @@ public class Dictionary_files : MonoBehaviour
         Replics_mas1 = Replics.ToArray();
         Replics.Clear();
         return Replics_mas1;
+    }
+    public static string GetLangDictionary_FromNameToColor(string Filepath, string Name)
+    {
+        StreamReader sr = new StreamReader(Filepath);
+        string Colors_and_names = sr.ReadToEnd();
+        string[] Colors_and_names_mas = Colors_and_names.Split('-');
+        for(int i = 0; i < Colors_and_names_mas.Length; i++)
+        {
+            if(Colors_and_names_mas[i] == Name)
+            {
+                return Colors_and_names_mas[i + 1];
+            }
+        }
+        return Colors_and_names_mas[Colors_and_names_mas.Length - 1];
     }
 }
