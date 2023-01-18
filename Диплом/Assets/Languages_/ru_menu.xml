@@ -1,0 +1,12 @@
+<?xml version="1.0"  encoding="utf-8"?>
+<start>
+	<object name="Lang">Язык</object>
+	<object name="Play_Text">Играть</object>
+	<object name="sett_Text">Настройки</object>
+	<object name="Exit_Text">Выход</object>
+	<object name="Resolution">Разрешение</object>
+	<object name="Resol_choice">1280х1080</object>
+	<object name="Lang_choice">Русский</object>
+	<object name="setIn_text">Применить</object>
+	<object name="Back_Text">Назад</object>
+</start>

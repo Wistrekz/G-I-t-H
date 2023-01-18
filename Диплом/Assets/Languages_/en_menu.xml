@@ -1,0 +1,12 @@
+<?xml version="1.0"  encoding="utf-8"?>
+<start>
+	<object name="Play_Text">Play</object>
+	<object name="sett_Text">Settings</object>
+	<object name="Exit_Text">Exit</object>
+	<object name="Lang">Language</object>
+	<object name="Resolution">Resolution</object>
+	<object name="Resol_choice">1280x1080</object>
+	<object name="Lang_choice">English</object>
+	<object name="setIn_text">Accept</object>
+	<object name="Back_Text">Back</object>
+</start>
