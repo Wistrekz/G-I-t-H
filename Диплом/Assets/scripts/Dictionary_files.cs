@@ -37,6 +37,7 @@ public class Dictionary_files : MonoBehaviour
         foreach (XmlNode item in wordList)
         {
             Replics.Add(item.Attributes["name"] + item.InnerText);
+
         }
         Replics_mas1 = new string[Replics.Count];
         Replics_mas1 = Replics.ToArray();
@@ -47,6 +48,7 @@ public class Dictionary_files : MonoBehaviour
     {
         StreamReader sr = new StreamReader(Filepath);
         string Colors_and_names = sr.ReadToEnd();
+        sr.Close();
         string[] Colors_and_names_mas = Colors_and_names.Split('-');
         for(int i = 0; i < Colors_and_names_mas.Length; i++)
         {

@@ -9,13 +9,19 @@ using UnityEngine.UIElements;
 public class DialogStart : MonoBehaviour
 {
     public DialogManager dm;
+    public Dialog_cutscene dCS;
     public moving IsMove;
+    public bool IsCutscene;
 
     private bool IsIntrigger = false;
 
     private void Update()
     {
         if(IsIntrigger)
+        {
+            DialogArea();
+        }
+        if(IsCutscene)
         {
             DialogArea();
         }
@@ -40,12 +46,25 @@ public class DialogStart : MonoBehaviour
     {
         Debug.Log("dsafas");
         
-        if ((Input.GetButtonDown("Fire1") && !dm.inscript) || (Input.GetButtonDown("Fire2") && !dm.inscript))
+        if(IsCutscene)
         {
-            Debug.Log("ddddddd");
-            IsMove.StopMoving();
-            dm.StartDialog();
+            if ((Input.GetButtonDown("Fire1")) || (Input.GetButtonDown("Fire2")))
+            {
+                Debug.Log("ddddddd");
+                dCS.StartDialog();
+                IsCutscene = false;
+            } 
         }
+        else
+        {
+            if ((Input.GetButtonDown("Fire1") && !dm.inscript) || (Input.GetButtonDown("Fire2") && !dm.inscript))
+            {
+                Debug.Log("ddddddd");
+                IsMove.StopMoving();
+                dm.StartDialog();
+            }
+        }
+        
     }
 
 }

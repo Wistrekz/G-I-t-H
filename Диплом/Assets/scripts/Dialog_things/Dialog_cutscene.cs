@@ -1,7 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Windows.Media;
+using System.IO;
+using System.Windows;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,22 +10,18 @@ public class Dialog_cutscene : MonoBehaviour
 {
     public Text dialogtext;
     public GameObject panel;
-    public bool inscript;
     public Text nametext;
-    public string path, lang_mark;
-    public string[] players_scene;
+    public string path, path_artists_info;
 
     public Animator animator;
 
     private string[] replics;
-    private bool inTrigger;
     private int number;
     private int rep_num;
     private string[] replic_name;
 
     public void Start()
     {
-        Debug.Log(gameObject.name);
         replics = Dictionary_files.GetLangDictionary(path);
     }
 
@@ -33,12 +30,10 @@ public class Dialog_cutscene : MonoBehaviour
 
     public void Update()
     {
-        if (inTrigger && inscript)
+        if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
         {
-            if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
-            {
-                DisplayNextReplics();
-            }
+            DisplayNextReplics();
+            Debug.Log("f");
         }
     }
 
@@ -49,29 +44,65 @@ public class Dialog_cutscene : MonoBehaviour
         nametext.text = replic_name[0];
 
         number = 0;
-        inTrigger = true;
-        inscript = true;
-        rep_num++;
+        rep_num = 0;
     }
 
     public void DisplayNextReplics()
     {
+        Debug.Log("q");
         replic_name = replics[rep_num].Split(new string[] { Artists_marks.Namemark_Symbol }, StringSplitOptions.None);
-        if (number == replics.Length)
+        rep_num++;
+        Debug.Log("r");
+        if (number == replics.Length - 1)
         {
+            Debug.Log("preend");
             Invoke(nameof(EndDialog), 0.1f);
             number = 0;
             return;
         }
         else
         {
-            nametext.text = replic_name[0];
-            UnityEngine.Color color;
-            ColorUtility.TryParseHtmlString(Dictionary_files.GetLangDictionary_FromNameToColor("Assets/Languages_/People_color.txt", nametext.text), out color);
-            nametext.color = color;
-            dialogtext.text = replic_name[1];
-            dialogtext.color = color;
-            number++;
+            Debug.Log("y");
+            StringReader O = new StringReader(path_artists_info);
+            string str = O.ReadToEnd();
+            O.Close();
+            Debug.Log("y");
+            string[] krak = str.Split(new char[2] {'-','\n' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] Names = new string[krak.Length/2];
+            string[] cols = new string[krak.Length/2];
+            for(int r = 0; r < krak.Length; r++)
+            {
+                
+                if(r != Names.Length)
+                {
+                    if (r % 2 == 0)
+                        Names[r] = krak[r];
+                }
+            }
+            Debug.Log("yw");
+            for (int i = 0; i < krak.Length; i++)
+            {
+                if (i % 2 != 0)
+                    cols[i] = krak[i];
+            }
+            UnityEngine.Color[] colors = new Color[cols.Length];
+            for(int r1 = 0; r1 < colors.Length; r1++)
+            {
+                ColorUtility.TryParseHtmlString(cols[r1], out colors[r1]);
+            }
+            for(int y = 0; y < cols.Length; y++)
+            {
+                if(Dictionary_files.GetLangDictionary_FromNameToColor(path_artists_info, nametext.text) == cols[y])
+                {
+                    nametext.color = colors[y];
+                    dialogtext.text = replic_name[1];
+                    dialogtext.color = colors[y];
+                    Debug.Log("zf");
+                    Debug.Log(colors[y]);
+                    number++;
+                    break;
+                }
+            }
         }
         /*
         StopAllCoroutines();
@@ -92,10 +123,9 @@ public class Dialog_cutscene : MonoBehaviour
     {
         panel.SetActive(false);
         FindObjectOfType<moving>().StartMoving();
-        inTrigger = false;
-        inscript = false;
         rep_num = 0;
         animator.SetBool("IsTextEnd", true);
+        Debug.Log("end");
     }
 
     /*
