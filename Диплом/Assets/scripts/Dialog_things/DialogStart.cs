@@ -43,14 +43,11 @@ public class DialogStart : MonoBehaviour
         IsIntrigger = false;
     }
     private void DialogArea()
-    {
-        Debug.Log("dsafas");
-        
+    {   
         if(IsCutscene)
         {
             if ((Input.GetButtonDown("Fire1")) || (Input.GetButtonDown("Fire2")))
             {
-                Debug.Log("ddddddd");
                 dCS.StartDialog();
                 IsCutscene = false;
             } 

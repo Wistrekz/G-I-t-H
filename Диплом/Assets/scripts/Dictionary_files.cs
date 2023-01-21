@@ -3,7 +3,7 @@ using System.Xml;
 using System.IO;
 using System.Xml.Serialization;
 using UnityEngine;
-
+using System;
 
 [XmlRoot("start")]
 public class Dictionary_files : MonoBehaviour
@@ -23,7 +23,6 @@ public class Dictionary_files : MonoBehaviour
                 Replics.Add(item.InnerText);
             }
         }
-        Replics_mas1 = new string[Replics.Count];
         Replics_mas1 = Replics.ToArray();
         Replics.Clear();
         return Replics_mas1;
@@ -36,8 +35,8 @@ public class Dictionary_files : MonoBehaviour
         XmlNodeList wordList = xmlDoc.GetElementsByTagName("replic");
         foreach (XmlNode item in wordList)
         {
-            Replics.Add(item.Attributes["name"] + item.InnerText);
-
+            Replics.Add(item.Attributes["name"].Value + item.InnerText);
+            Debug.Log(item.Attributes["name"].Value);
         }
         Replics_mas1 = new string[Replics.Count];
         Replics_mas1 = Replics.ToArray();
@@ -49,7 +48,8 @@ public class Dictionary_files : MonoBehaviour
         StreamReader sr = new StreamReader(Filepath);
         string Colors_and_names = sr.ReadToEnd();
         sr.Close();
-        string[] Colors_and_names_mas = Colors_and_names.Split('-');
+        Debug.Log(Name);
+        string[] Colors_and_names_mas = Colors_and_names.Split(new string[2] { "-", Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
         for(int i = 0; i < Colors_and_names_mas.Length; i++)
         {
             if(Colors_and_names_mas[i] == Name)
@@ -57,6 +57,7 @@ public class Dictionary_files : MonoBehaviour
                 return Colors_and_names_mas[i + 1];
             }
         }
+        Replics.Clear();
         return Colors_and_names_mas[Colors_and_names_mas.Length - 1];
     }
 }

@@ -8,7 +8,7 @@ public class settings_methods : MonoBehaviour
 {
     public Text lang_place;
 
-    public static string Language_mark_for_all;
+    public static string Language_mark_for_all = "";
 
     private string[] Lang_enum;
     private string[] mark_enum;
@@ -17,7 +17,7 @@ public class settings_methods : MonoBehaviour
     private int num;
     enum Languages
     {
-        Русский, English
+        Р СѓСЃСЃРєРёР№, English
     }
     public enum Lang_marks
     {
@@ -26,6 +26,7 @@ public class settings_methods : MonoBehaviour
 
     void Start()
     {
+        Language_mark_for_all = "ru";
         Array valuesAsArray = Enum.GetValues(typeof(Languages));
         Lang_enum = new string[valuesAsArray.Length];
         int i = 0;
@@ -89,7 +90,7 @@ public class settings_methods : MonoBehaviour
         {
             if(lang_place.text == Lang_enum[f])
             {
-                Debug.Log(Lang_enum[f] + "равен");
+                Debug.Log(Lang_enum[f] + "пїЅпїЅпїЅпїЅпїЅ");
                 Language_mark_for_all = mark_enum[f];
                 Debug.Log(Language_mark_for_all);
                 return;
