@@ -10,7 +10,6 @@ public class tree_anim : MonoBehaviour
 
     private int switcher = 0;
     private bool reverse;
-    private Timer timer = new Timer();
 
 
     void Start()
@@ -44,7 +43,6 @@ public class tree_anim : MonoBehaviour
             reverse = false;
         }
         Debug.Log(switcher);
-        timer.StartTime();
         anim();
     }
 }

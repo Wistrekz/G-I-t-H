@@ -1,8 +1,8 @@
 <?xml version="1.0"  encoding="utf-8"?>
 <start>
-	<replic name="Father*{KL::'}"> 32234 </replic>
-	<replic name="Father*{KL::'}"> hhh </replic>
-	<replic name="Wife*{KL::'}"> dsf </replic>
-	<replic name="Wife*{KL::'}"> dsfq </replic>
-	<replic name="Hans*{KL::'}"> ufd</replic>
+	<replic name="Отец*{KL::'}"> парап </replic>
+	<replic name="Отец*{KL::'}"> пвапт </replic>
+	<replic name="Жена*{KL::'}"> тормитьпр </replic>
+	<replic name="Жена*{KL::'}"> трорапапрт </replic>
+	<replic name="Ганс*{KL::'}"> 5345</replic>
 </start>

@@ -11,7 +11,8 @@ public class menu_clicker : MonoBehaviour
 
 	public GameObject block;
 	public GameObject Set_block;
-	public void MouseOn()
+
+    public void MouseOn()
 	{
 		Debug.Log("sdferf");
 		text.color = Color.yellow;
@@ -23,9 +24,9 @@ public class menu_clicker : MonoBehaviour
 		text.color = Color.white;
 	}
 
-    public void TotheScene()
+    public void TotheScene(int scene)
     {
-		SceneManager.LoadScene("Test_walking");
+		SceneManager.LoadScene(scene);
 	}
 	public void Exit_game()
     {

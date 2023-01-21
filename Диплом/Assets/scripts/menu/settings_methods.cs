@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,40 +9,47 @@ public class settings_methods : MonoBehaviour
 {
     public Text lang_place;
 
-    public static string Language_mark_for_all = "";
+    public static string Language_mark_for_all;
+    public string path_of_SetIn_Langs;
 
-    private string[] Lang_enum;
-    private string[] mark_enum;
+    public static string path_of_SetIn_Langs_forAll;
+
+    private string[] Langs;
+    private string[] Marks;
 
     private int count;
-    private int num;
-    enum Languages
-    {
-        Русский, English
-    }
-    public enum Lang_marks
-    {
-        ru, en
-    }
 
     void Start()
     {
-        Language_mark_for_all = "ru";
-        Array valuesAsArray = Enum.GetValues(typeof(Languages));
-        Lang_enum = new string[valuesAsArray.Length];
-        int i = 0;
-        foreach(var f in valuesAsArray)
+        Dictionary_files.Default_lang_settings();
+        path_of_SetIn_Langs_forAll = path_of_SetIn_Langs;
+        StreamReader sr = new StreamReader(path_of_SetIn_Langs);
+        string Langs_and_marks = sr.ReadToEnd();
+        sr.Close();
+        
+        string[] Langs_and_marks_mas = Langs_and_marks.Split(new string[2] { " - ", Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+        int i = 0, r = 0;
+        Langs = new string[Langs_and_marks_mas.Length/2];
+        Marks = new string[Langs_and_marks_mas.Length/2];
+        foreach(string f in Langs_and_marks_mas)
         {
-            Lang_enum[i] = f.ToString();
-            i++;
+            if (r % 2 == 0)
+            {
+                Langs[i] = f;
+                i++;
+            }
+            r++;
         }
-        Array valuesAsArray1 = Enum.GetValues(typeof(Lang_marks));
-        mark_enum = new string[valuesAsArray1.Length];
         i = 0;
-        foreach (var f in valuesAsArray1)
+        r = 0;
+        foreach (string f in Langs_and_marks_mas)
         {
-            mark_enum[i] = f.ToString();
-            i++;
+            if (r % 2 != 0)
+            {
+                Marks[i] = f;
+                i++;
+            }
+            r++;
         }
     }
 
@@ -49,53 +57,51 @@ public class settings_methods : MonoBehaviour
     {
         if(count == 0)
         {
-            if(lang_place.text != Lang_enum[count])
+            if(lang_place.text != Langs[count])
             {
-                lang_place.text = Lang_enum[count];
+                lang_place.text = Langs[count];
             }
             
         }
         else
         {
             count--;
-            if (lang_place.text != Lang_enum[count])
+            if (lang_place.text != Langs[count])
             {
-                lang_place.text = Lang_enum[count];
+                lang_place.text = Langs[count];
             }
         }
     }
     public void Rightlanguage()
     {
-        if (count == Lang_enum.Length - 1)
+        if (count == Langs.Length - 1)
         {
-            if (lang_place.text != Lang_enum[count])
+            if (lang_place.text != Langs[count])
             {
-                lang_place.text = Lang_enum[count];
+                lang_place.text = Langs[count];
             }
         }
         else
         {
             count++;
-            Debug.Log(count);
-            if (lang_place.text != Lang_enum[count])
+            if (lang_place.text != Langs[count])
             {
-                lang_place.text = Lang_enum[count];
+                lang_place.text = Langs[count];
             }
         }
         
     }
     public void SeT_language()
     {
-        for(int f = 0; f < Lang_enum.Length; f++)
+        for(int f = 0; f < Langs.Length; f++)
         {
-            if(lang_place.text == Lang_enum[f])
+            if(lang_place.text == Langs[f])
             {
-                Debug.Log(Lang_enum[f] + "�����");
-                Language_mark_for_all = mark_enum[f];
+                Debug.Log(Langs[f]);
+                Language_mark_for_all = Marks[f];
                 Debug.Log(Language_mark_for_all);
                 return;
             }
-            num++;
         }
         
     }

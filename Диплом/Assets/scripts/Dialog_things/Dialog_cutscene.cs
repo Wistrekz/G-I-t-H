@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Dialog_cutscene : MonoBehaviour
@@ -23,7 +24,8 @@ public class Dialog_cutscene : MonoBehaviour
 
     public void Start()
     {
-        replics = Dictionary_files.GetLangDictionary(path);
+        path = Dictionary_files.Mark_Reader(path);
+        replics = Dictionary_files.GetLangDictionary(path, true);
     }
 
 
@@ -34,14 +36,12 @@ public class Dialog_cutscene : MonoBehaviour
         if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
         {
             DisplayNextReplics();
-            Debug.Log("f");
         }
     }
 
     public void StartDialog()
     {
         panel.SetActive(true);
-        Debug.Log("StartDialog");
     }
 
     public void DisplayNextReplics()
@@ -61,13 +61,16 @@ public class Dialog_cutscene : MonoBehaviour
             nametext.color = char_color;
             dialogtext.text = replic_name[1];
             dialogtext.color = char_color;
-            Debug.Log(replic_name[1]);
             rep_num++;
         }
-        Debug.Log("olololo");
         /*
         StopAllCoroutines();
         StartCoroutine(Typereplic(replic));*/
+    }
+
+    public void NextScene(int scene_num)
+    {
+        SceneManager.LoadScene(scene_num);
     }
     /*
     IEnumerator Typereplic(string replic)
@@ -85,7 +88,6 @@ public class Dialog_cutscene : MonoBehaviour
         panel.SetActive(false);
         rep_num = 0;
         animator.SetBool("IsTextEnd", true);
-        Debug.Log("end");
     }
 
     /*
