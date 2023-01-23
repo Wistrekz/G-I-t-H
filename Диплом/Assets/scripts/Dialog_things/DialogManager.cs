@@ -21,7 +21,6 @@ public class DialogManager : MonoBehaviour
 
     public void Start()
     {
-        Debug.Log(gameObject.name);
         replics = Dictionary_files.GetLangDictionary(path, gameObject.name);
     }
 

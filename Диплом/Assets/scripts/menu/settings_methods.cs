@@ -10,6 +10,7 @@ public class settings_methods : MonoBehaviour
     public Text lang_place;
 
     public static string Language_mark_for_all;
+    public static bool LangSetIn;
     public string path_of_SetIn_Langs;
 
     public static string path_of_SetIn_Langs_forAll;
@@ -100,6 +101,10 @@ public class settings_methods : MonoBehaviour
                 Debug.Log(Langs[f]);
                 Language_mark_for_all = Marks[f];
                 Debug.Log(Language_mark_for_all);
+                if(Language_mark_for_all != null)
+                {
+                    LangSetIn = true;
+                }
                 return;
             }
         }
