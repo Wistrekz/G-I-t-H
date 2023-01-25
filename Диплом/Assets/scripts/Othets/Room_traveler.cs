@@ -31,6 +31,17 @@ public class Room_traveler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        intrigger = true;
+        if (collision.gameObject.name == "Hans")
+        {
+            intrigger = true;
+        }
+        else
+        {
+            intrigger = false;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        intrigger = false;
     }
 }
