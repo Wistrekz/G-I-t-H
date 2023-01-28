@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class MusicController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private string SpecTag;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        GameObject obj = GameObject.FindWithTag(SpecTag);
+
+        if(obj != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            gameObject.tag = SpecTag;
+        }
     }
 }
