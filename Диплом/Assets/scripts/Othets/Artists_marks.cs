@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Artists_marks : MonoBehaviour
 {
-    public string[,] Artists_colors;
-
     public static string Namemark_Symbol = "*{KL::'}";
+    public static Vector2 Player_coordinates;
 
     private void Start()
     {
+        Debug.Log("sdjghluio098677");
         SetLanguageIn();
     }
 

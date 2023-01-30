@@ -1685,8 +1685,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922947bb5955725488089c90fe1c900f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  dir: 0
   Isdoor: 0
+  IsOneHouse: 0
   scene_name: Test_walking
+  Block_numAdress: 0
 --- !u!212 &1340569838
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1847,8 +1851,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922947bb5955725488089c90fe1c900f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  dir: 0
   Isdoor: 0
+  IsOneHouse: 0
   scene_name: Test_walking
+  Block_numAdress: 0
 --- !u!212 &1471642791
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2395,8 +2403,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922947bb5955725488089c90fe1c900f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  dir: 0
   Isdoor: 0
-  scene_name: Test_walking
+  IsOneHouse: 0
+  scene_name: 
+  Block_numAdress: 0
 --- !u!212 &1708189202
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2820,8 +2832,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922947bb5955725488089c90fe1c900f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  dir: 0
   Isdoor: 0
+  IsOneHouse: 0
   scene_name: Test_walking
+  Block_numAdress: 0
 --- !u!212 &2120371909
 SpriteRenderer:
   m_ObjectHideFlags: 0
