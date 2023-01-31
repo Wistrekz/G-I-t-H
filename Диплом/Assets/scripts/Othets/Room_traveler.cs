@@ -21,11 +21,12 @@ public class Room_traveler : MonoBehaviour
     public bool IsOneHouse;
     public string scene_name;
     public int Block_numAdress;
+    public float PercentOfTeleportation;
 
     private bool intrigger;
     private Vector2[] Teleport_Blocks_mas;
 
-    private void Start()
+    private void Calc_rooms()
     {
         Teleport_Blocks_mas = new Vector2[Triggers_Parent.transform.childCount];
         for (int i = 0; i < Triggers_Parent.transform.childCount; i++)
@@ -37,7 +38,69 @@ public class Room_traveler : MonoBehaviour
         if(intrigger)
         {
             Debug.Log("sdfgg");
-            if(IsOneHouse)
+            if (IsOneHouse)
+            {
+                if (Isdoor)
+                {
+                    if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
+                    {
+                        Calc_rooms();
+                        for (int i = 0; i < Teleport_Blocks_mas.Length; i++)
+                        {
+                            Debug.Log(Teleport_Blocks_mas[i]);
+                            if (i == Block_numAdress)
+                            {
+                                Player.transform.position = Teleport_Blocks_mas[i];
+                                switch (dir)
+                                {
+                                    case direction.left:
+                                        Player.transform.position = new Vector2(Player.transform.position.x - PercentOfTeleportation, Player.transform.position.y);
+                                        break;
+                                    case direction.right:
+                                        Player.transform.position = new Vector2(Player.transform.position.x + PercentOfTeleportation, Player.transform.position.y);
+                                        break;
+                                    case direction.Up:
+                                        Player.transform.position = new Vector2(Player.transform.position.x, Player.transform.position.y + PercentOfTeleportation);
+                                        break;
+                                    case direction.Down:
+                                        Player.transform.position = new Vector2(Player.transform.position.x, Player.transform.position.y - PercentOfTeleportation);
+                                        break;
+
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    Calc_rooms();
+                    for (int i = 0; i < Teleport_Blocks_mas.Length; i++)
+                    {
+                        if (i == Block_numAdress)
+                        {
+                            Player.transform.position = Teleport_Blocks_mas[i];
+                            switch (dir)
+                            {
+                                case direction.left:
+                                    Player.transform.position = new Vector2(Player.transform.position.x - PercentOfTeleportation, Player.transform.position.y);
+                                    break;
+                                case direction.right:
+                                    Player.transform.position = new Vector2(Player.transform.position.x + PercentOfTeleportation, Player.transform.position.y);
+                                    break;
+                                case direction.Up:
+                                    Player.transform.position = new Vector2(Player.transform.position.x, Player.transform.position.y + PercentOfTeleportation);
+                                    break;
+                                case direction.Down:
+                                    Player.transform.position = new Vector2(Player.transform.position.x, Player.transform.position.y - PercentOfTeleportation);
+                                    break;
+
+                            }
+                        }
+                    }
+                }
+                
+            }
+            else
             {
                 if (Isdoor)
                 {
@@ -49,16 +112,16 @@ public class Room_traveler : MonoBehaviour
                         switch (dir)
                         {
                             case direction.left:
-                                Player.transform.position = new Vector2(Player.transform.position.x - (Math.Abs(Player.transform.localScale.x) / 100 * 20), Player.transform.position.y);
+                                Player.transform.position = new Vector2(Player.transform.position.x - (Math.Abs(Player.transform.lossyScale.x) / 100 * PercentOfTeleportation), Player.transform.position.y);
                                 break;
                             case direction.right:
-                                Player.transform.position = new Vector2(Player.transform.position.x + (Math.Abs(Player.transform.localScale.x) / 100 * 20), Player.transform.position.y);
+                                Player.transform.position = new Vector2(Player.transform.position.x + (Math.Abs(Player.transform.lossyScale.x) / 100 * PercentOfTeleportation), Player.transform.position.y);
                                 break;
                             case direction.Up:
-                                Player.transform.position = new Vector2(Player.transform.position.x, Player.transform.position.y + (Math.Abs(Player.transform.localScale.x) / 100 * 20));
+                                Player.transform.position = new Vector2(Player.transform.position.x, Player.transform.position.y + (Math.Abs(Player.transform.lossyScale.x) / 100 * PercentOfTeleportation));
                                 break;
                             case direction.Down:
-                                Player.transform.position = new Vector2(Player.transform.position.x, Player.transform.position.y - (Math.Abs(Player.transform.localScale.x) / 100 * 20));
+                                Player.transform.position = new Vector2(Player.transform.position.x, Player.transform.position.y - (Math.Abs(Player.transform.lossyScale.x) / 100 * PercentOfTeleportation));
                                 break;
 
                         }
@@ -66,32 +129,23 @@ public class Room_traveler : MonoBehaviour
                 }
                 else
                 {
+                    Artists_marks.Player_coordinates = Player.transform.position;
                     SceneManager.LoadScene(scene_name);
-                }
-            }
-            else
-            {
-                for(int i = 0; i < Teleport_Blocks_mas.Length; i++)
-                {
-                    if(i == Block_numAdress)
+                    switch (dir)
                     {
-                        Player.transform.position = Teleport_Blocks_mas[i];
-                        switch(dir)
-                        {
-                            case direction.left:
-                                Player.transform.position = new Vector2(Player.transform.position.x - (Math.Abs(Player.transform.localScale.x) /100*20), Player.transform.position.y);
-                                break;
-                            case direction.right:
-                                Player.transform.position = new Vector2(Player.transform.position.x + (Math.Abs(Player.transform.localScale.x) / 100 * 20), Player.transform.position.y);
-                                break;
-                            case direction.Up:
-                                Player.transform.position = new Vector2(Player.transform.position.x, Player.transform.position.y + (Math.Abs(Player.transform.localScale.x) / 100 * 20));
-                                break;
-                            case direction.Down:
-                                Player.transform.position = new Vector2(Player.transform.position.x, Player.transform.position.y - (Math.Abs(Player.transform.localScale.x) / 100 * 20));
-                                break;
+                        case direction.left:
+                            Player.transform.position = new Vector2(Player.transform.position.x - (Math.Abs(Player.transform.lossyScale.x) / 100 * PercentOfTeleportation), Player.transform.position.y);
+                            break;
+                        case direction.right:
+                            Player.transform.position = new Vector2(Player.transform.position.x + (Math.Abs(Player.transform.lossyScale.x) / 100 * PercentOfTeleportation), Player.transform.position.y);
+                            break;
+                        case direction.Up:
+                            Player.transform.position = new Vector2(Player.transform.position.x, Player.transform.position.y + (Math.Abs(Player.transform.lossyScale.x) / 100 * PercentOfTeleportation));
+                            break;
+                        case direction.Down:
+                            Player.transform.position = new Vector2(Player.transform.position.x, Player.transform.position.y - (Math.Abs(Player.transform.lossyScale.x) / 100 * PercentOfTeleportation));
+                            break;
 
-                        }
                     }
                 }
             }

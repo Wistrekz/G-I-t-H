@@ -921,8 +921,9 @@ MonoBehaviour:
   dir: 3
   Isdoor: 1
   IsOneHouse: 0
-  scene_name: 
+  scene_name: Left_house
   Block_numAdress: 0
+  PercentOfTeleportation: 1
 --- !u!1 &99225743
 GameObject:
   m_ObjectHideFlags: 0
@@ -4568,6 +4569,7 @@ MonoBehaviour:
   IsOneHouse: 0
   scene_name: 
   Block_numAdress: 0
+  PercentOfTeleportation: 0
 --- !u!1 &419542146
 GameObject:
   m_ObjectHideFlags: 0
@@ -6131,6 +6133,7 @@ MonoBehaviour:
   IsOneHouse: 0
   scene_name: 
   Block_numAdress: 0
+  PercentOfTeleportation: 0
 --- !u!1 &584141802
 GameObject:
   m_ObjectHideFlags: 0
@@ -6421,6 +6424,7 @@ MonoBehaviour:
   IsOneHouse: 0
   scene_name: 
   Block_numAdress: 0
+  PercentOfTeleportation: 0
 --- !u!1 &635468094
 GameObject:
   m_ObjectHideFlags: 0
@@ -6681,6 +6685,7 @@ MonoBehaviour:
   IsOneHouse: 0
   scene_name: 
   Block_numAdress: 0
+  PercentOfTeleportation: 0
 --- !u!1 &676372337
 GameObject:
   m_ObjectHideFlags: 0
@@ -6810,6 +6815,7 @@ MonoBehaviour:
   IsOneHouse: 0
   scene_name: 
   Block_numAdress: 0
+  PercentOfTeleportation: 0
 --- !u!1 &677871129
 GameObject:
   m_ObjectHideFlags: 0
@@ -8260,6 +8266,7 @@ MonoBehaviour:
   IsOneHouse: 0
   scene_name: 
   Block_numAdress: 0
+  PercentOfTeleportation: 0
 --- !u!1 &809793780
 GameObject:
   m_ObjectHideFlags: 0
@@ -9324,6 +9331,7 @@ MonoBehaviour:
   IsOneHouse: 0
   scene_name: General_house
   Block_numAdress: 0
+  PercentOfTeleportation: 0
 --- !u!1 &884862774
 GameObject:
   m_ObjectHideFlags: 0
@@ -15022,6 +15030,7 @@ MonoBehaviour:
   IsOneHouse: 0
   scene_name: 
   Block_numAdress: 0
+  PercentOfTeleportation: 0
 --- !u!1 &1439952204
 GameObject:
   m_ObjectHideFlags: 0
@@ -16532,6 +16541,7 @@ MonoBehaviour:
   IsOneHouse: 0
   scene_name: 
   Block_numAdress: 0
+  PercentOfTeleportation: 0
 --- !u!1 &1520202266
 GameObject:
   m_ObjectHideFlags: 0
@@ -16839,6 +16849,7 @@ MonoBehaviour:
   IsOneHouse: 0
   scene_name: 
   Block_numAdress: 0
+  PercentOfTeleportation: 0
 --- !u!1 &1542256019
 GameObject:
   m_ObjectHideFlags: 0
@@ -20174,6 +20185,7 @@ MonoBehaviour:
   IsOneHouse: 0
   scene_name: 
   Block_numAdress: 0
+  PercentOfTeleportation: 0
 --- !u!61 &1849128098
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21530,6 +21542,7 @@ MonoBehaviour:
   IsOneHouse: 0
   scene_name: 
   Block_numAdress: 0
+  PercentOfTeleportation: 0
 --- !u!1 &1969006403
 GameObject:
   m_ObjectHideFlags: 0
