@@ -2,22 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Artists_marks : MonoBehaviour
+public static class Artists_marks
 {
     public static string Namemark_Symbol = "*{KL::'}";
-    public static Vector2 Player_coordinates;
-
-    private void Start()
+    private static Vector2 coordinates;
+    public static Vector2 Player_coordinates
     {
-        Debug.Log("sdjghluio098677");
-        SetLanguageIn();
-    }
-
-    public void SetLanguageIn()
-    {
-        if(!settings_methods.LangSetIn)
+        get
         {
-            Dictionary_files.Default_lang_settings();
+            return coordinates;
+        }
+        set
+        {
+            coordinates = value;
         }
     }
+
 }

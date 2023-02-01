@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/General_house.unity
     guid: 4a0b94baef23f4341a91b2ae04237b43
+  - enabled: 1
+    path: Assets/Scenes/Left_house.unity
+    guid: 06e8ad414ea6b134dab9c7b1798ca4de
   m_configObjects: {}
