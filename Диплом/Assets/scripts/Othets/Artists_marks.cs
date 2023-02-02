@@ -5,17 +5,6 @@ using UnityEngine;
 public static class Artists_marks
 {
     public static string Namemark_Symbol = "*{KL::'}";
-    private static Vector2 coordinates;
-    public static Vector2 Player_coordinates
-    {
-        get
-        {
-            return coordinates;
-        }
-        set
-        {
-            coordinates = value;
-        }
-    }
+    public static Vector3 Player_coordinates;
 
 }
