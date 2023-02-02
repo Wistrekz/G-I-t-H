@@ -17,7 +17,7 @@ public class Room_traveler : MonoBehaviour
     public GameObject Player;
     public GameObject Triggers_Parent;
     public direction dir;
-    public float PercentOfTeleportation;
+    public float Player_PercentOfTeleportation;
     public bool Isdoor;
     [Header("Ouside_sets")]
     public bool DoorOutside;
@@ -27,8 +27,6 @@ public class Room_traveler : MonoBehaviour
     public bool IsOneHouse;
 
     public static direction direct;
-    public static float PercentOfTeleport;
-    public static bool IsTeleported_Outside;
 
     private bool intrigger;
     private bool SceneLoaded;
@@ -46,43 +44,43 @@ public class Room_traveler : MonoBehaviour
         switch (dir)
         {
             case direction.left:
-                Player.transform.position = new Vector2(Player.transform.position.x - (Math.Abs(Player.transform.lossyScale.x) / 100 * PercentOfTeleportation), Player.transform.position.y);
+                Player.transform.position = new Vector2(Player.transform.position.x - (Math.Abs(Player.transform.lossyScale.x) / 100 * Player_PercentOfTeleportation), Player.transform.position.y);
                 Debug.Log(Player.transform.position);
                 break;
             case direction.right:
-                Player.transform.position = new Vector2(Player.transform.position.x + (Math.Abs(Player.transform.lossyScale.x) / 100 * PercentOfTeleportation), Player.transform.position.y);
+                Player.transform.position = new Vector2(Player.transform.position.x + (Math.Abs(Player.transform.lossyScale.x) / 100 * Player_PercentOfTeleportation), Player.transform.position.y);
                 Debug.Log(Player.transform.position);
                 break;
             case direction.Up:
-                Player.transform.position = new Vector2(Player.transform.position.x, Player.transform.position.y + (Math.Abs(Player.transform.lossyScale.x) / 100 * PercentOfTeleportation));
+                Player.transform.position = new Vector2(Player.transform.position.x, Player.transform.position.y + (Math.Abs(Player.transform.lossyScale.x) / 100 * Player_PercentOfTeleportation));
                 Debug.Log(Player.transform.position);
                 break;
             case direction.Down:
-                Player.transform.position = new Vector2(Player.transform.position.x, Player.transform.position.y - (Math.Abs(Player.transform.lossyScale.x) / 100 * PercentOfTeleportation));
+                Player.transform.position = new Vector2(Player.transform.position.x, Player.transform.position.y - (Math.Abs(Player.transform.lossyScale.x) / 100 * Player_PercentOfTeleportation));
                 Debug.Log(Player.transform.position);
                 break;
 
         }
     }
 
-    private void To_Teleport_Distance(direction directon, float PercentOfTeleportik)
+    private void To_Teleport_Distance(direction directon, float Player_PercentOfTeleportik)
     {
         switch (directon)
         {
             case direction.left:
-                Player.transform.position = new Vector2(Player.transform.position.x - (Math.Abs(Player.transform.lossyScale.x) / 100 * PercentOfTeleportik), Player.transform.position.y);
+                Player.transform.position = new Vector2(Player.transform.position.x - (Math.Abs(Player.transform.lossyScale.x) / 100 * Player_PercentOfTeleportik), Player.transform.position.y);
                 Debug.Log(Player.transform.position);
                 break;
             case direction.right:
-                Player.transform.position = new Vector2(Player.transform.position.x + (Math.Abs(Player.transform.lossyScale.x) / 100 * PercentOfTeleportik), Player.transform.position.y);
+                Player.transform.position = new Vector2(Player.transform.position.x + (Math.Abs(Player.transform.lossyScale.x) / 100 * Player_PercentOfTeleportik), Player.transform.position.y);
                 Debug.Log(Player.transform.position);
                 break;
             case direction.Up:
-                Player.transform.position = new Vector2(Player.transform.position.x, Player.transform.position.y + (Math.Abs(Player.transform.lossyScale.x) / 100 * PercentOfTeleportik));
+                Player.transform.position = new Vector2(Player.transform.position.x, Player.transform.position.y + (Math.Abs(Player.transform.lossyScale.x) / 100 * Player_PercentOfTeleportik));
                 Debug.Log(Player.transform.position);
                 break;
             case direction.Down:
-                Player.transform.position = new Vector2(Player.transform.position.x, Player.transform.position.y - (Math.Abs(Player.transform.lossyScale.x) / 100 * PercentOfTeleportik));
+                Player.transform.position = new Vector2(Player.transform.position.x, Player.transform.position.y - (Math.Abs(Player.transform.lossyScale.x) / 100 * Player_PercentOfTeleportik));
                 Debug.Log(Player.transform.position);
                 break;
 
@@ -130,21 +128,20 @@ public class Room_traveler : MonoBehaviour
                 if(DoorOutside)
                 {
                     Debug.Log("q2134");
-                    IsTeleported_Outside = true;
+                    Artists_marks.Player_IsTeleported_Outside = true;
                     Set_static_sets();
                     SceneManager.LoadScene(scene_name);
-                    Debug.Log(Artists_marks.Player_coordinates);
-                    Debug.Log(direct + $" {PercentOfTeleport}");
+                    Debug.Log(direct + $" {Artists_marks.Player_PercentOfTeleport}");
                     
                 }
                 else
                 {
-                    Artists_marks.Player_coordinates = Player.transform.position;
+                    Artists_marks.Player_coordinates = gameObject.transform.position;
                     Set_static_sets();
                     SceneManager.LoadScene(scene_name);
                     Debug.Log(Player.transform.position);
                     Debug.Log(Artists_marks.Player_coordinates);
-                    Debug.Log(direct + $" {PercentOfTeleport}");
+                    Debug.Log(direct + $" {Artists_marks.Player_PercentOfTeleport}");
                 }
                 
             }
@@ -158,37 +155,35 @@ public class Room_traveler : MonoBehaviour
             }
             else
             {
-                Artists_marks.Player_coordinates = Player.transform.position;
+                Artists_marks.Player_coordinates = gameObject.transform.position;
                 SceneManager.LoadScene(scene_name);
             }
-            To_Teleport_Distance(direct, PercentOfTeleport);
         }
+    }
+
+    public static void Teleport_confirm()
+    {
+        
     }
 
     private void Set_static_sets()
     {
         direct = dir;
-        PercentOfTeleport = PercentOfTeleportation;
-    }
-
-    private void Start()
-    {
-        SceneLoaded = true;
+        Artists_marks.Player_PercentOfTeleport = Player_PercentOfTeleportation;
     }
 
     public void Update()
     {
-        if (IsTeleported_Outside && SceneLoaded)
+        if (Artists_marks.Player_IsTeleported_Outside)
         {
             Debug.Log("3423y78f");
             Player.transform.position = Artists_marks.Player_coordinates;
             Debug.Log(Player.transform.position);
-            To_Teleport_Distance(direct, PercentOfTeleport);
-            IsTeleported_Outside = false;
+            To_Teleport_Distance(direct, Artists_marks.Player_PercentOfTeleport);
+            Artists_marks.Player_IsTeleported_Outside = false;
         }
         if (intrigger)
         {
-            Debug.Log(IsTeleported_Outside);
             Debug.Log("sdfgg");
             if (IsOneHouse)
             {

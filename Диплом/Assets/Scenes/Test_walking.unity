@@ -4435,7 +4435,7 @@ MonoBehaviour:
   Player: {fileID: 424894505}
   Triggers_Parent: {fileID: 1821946983}
   dir: 3
-  PercentOfTeleportation: 0
+  Player_PercentOfTeleportation: 0
   Isdoor: 1
   DoorOutside: 0
   scene_name: 
@@ -6000,7 +6000,7 @@ MonoBehaviour:
   Player: {fileID: 424894505}
   Triggers_Parent: {fileID: 1821946983}
   dir: 3
-  PercentOfTeleportation: 0
+  Player_PercentOfTeleportation: 0
   Isdoor: 1
   DoorOutside: 0
   scene_name: 
@@ -6292,7 +6292,7 @@ MonoBehaviour:
   Player: {fileID: 424894505}
   Triggers_Parent: {fileID: 1821946983}
   dir: 3
-  PercentOfTeleportation: 0
+  Player_PercentOfTeleportation: 0
   Isdoor: 1
   DoorOutside: 0
   scene_name: 
@@ -6456,8 +6456,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 676078722}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7956, y: -0.331, z: 42.45395}
-  m_LocalScale: {x: 1.4331626, y: 0.40204197, z: 1}
+  m_LocalPosition: {x: 8.13, y: -0.37, z: 42.45395}
+  m_LocalScale: {x: 3.03, y: 0.40204197, z: 1}
   m_Children: []
   m_Father: {fileID: 1821946984}
   m_RootOrder: 0
@@ -6479,8 +6479,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 0.5, y: 0.5}
+    newSize: {x: 0.5, y: 0.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -6528,15 +6528,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 0.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &676078726
@@ -6554,7 +6554,7 @@ MonoBehaviour:
   Player: {fileID: 424894505}
   Triggers_Parent: {fileID: 1821946983}
   dir: 3
-  PercentOfTeleportation: 0
+  Player_PercentOfTeleportation: 0
   Isdoor: 1
   DoorOutside: 0
   scene_name: 
@@ -6685,7 +6685,7 @@ MonoBehaviour:
   Player: {fileID: 424894505}
   Triggers_Parent: {fileID: 1821946983}
   dir: 3
-  PercentOfTeleportation: 0
+  Player_PercentOfTeleportation: 0
   Isdoor: 1
   DoorOutside: 0
   scene_name: 
@@ -7368,7 +7368,7 @@ GameObject:
   - component: {fileID: 728439181}
   - component: {fileID: 728439180}
   m_Layer: 0
-  m_Name: General_house (1)
+  m_Name: Left_house
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7382,8 +7382,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 728439178}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.2289991, y: 11.5, z: 42.45395}
-  m_LocalScale: {x: 1.4331626, y: 0.5197867, z: 1}
+  m_LocalPosition: {x: -2.35, y: 11.5, z: 42.45395}
+  m_LocalScale: {x: 1.4331626, y: 0.39981997, z: 1}
   m_Children: []
   m_Father: {fileID: 1821946984}
   m_RootOrder: 2
@@ -7403,7 +7403,7 @@ MonoBehaviour:
   Player: {fileID: 424894505}
   Triggers_Parent: {fileID: 1821946983}
   dir: 2
-  PercentOfTeleportation: 3
+  Player_PercentOfTeleportation: 23
   Isdoor: 1
   DoorOutside: 0
   scene_name: Left_house
@@ -8225,7 +8225,7 @@ MonoBehaviour:
   Player: {fileID: 424894505}
   Triggers_Parent: {fileID: 1821946983}
   dir: 3
-  PercentOfTeleportation: 0
+  Player_PercentOfTeleportation: 0
   Isdoor: 1
   DoorOutside: 0
   scene_name: 
@@ -8726,7 +8726,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &852307050
 Transform:
   m_ObjectHideFlags: 0
@@ -9291,7 +9291,7 @@ MonoBehaviour:
   Player: {fileID: 424894505}
   Triggers_Parent: {fileID: 1821946983}
   dir: 2
-  PercentOfTeleportation: 3
+  Player_PercentOfTeleportation: 88
   Isdoor: 1
   DoorOutside: 0
   scene_name: General_house
@@ -13431,7 +13431,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1326241513
 Transform:
   m_ObjectHideFlags: 0
@@ -14978,7 +14978,7 @@ MonoBehaviour:
   Player: {fileID: 424894505}
   Triggers_Parent: {fileID: 1821946983}
   dir: 3
-  PercentOfTeleportation: 0
+  Player_PercentOfTeleportation: 0
   Isdoor: 1
   DoorOutside: 0
   scene_name: 
@@ -16490,7 +16490,7 @@ MonoBehaviour:
   Player: {fileID: 424894505}
   Triggers_Parent: {fileID: 1821946983}
   dir: 2
-  PercentOfTeleportation: 0
+  Player_PercentOfTeleportation: 0
   Isdoor: 0
   DoorOutside: 0
   scene_name: 
@@ -16799,7 +16799,7 @@ MonoBehaviour:
   Player: {fileID: 424894505}
   Triggers_Parent: {fileID: 1821946983}
   dir: 3
-  PercentOfTeleportation: 0
+  Player_PercentOfTeleportation: 0
   Isdoor: 1
   DoorOutside: 0
   scene_name: 
@@ -17758,7 +17758,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1625183263
 Transform:
   m_ObjectHideFlags: 0
@@ -20136,7 +20136,7 @@ MonoBehaviour:
   Player: {fileID: 424894505}
   Triggers_Parent: {fileID: 1821946983}
   dir: 3
-  PercentOfTeleportation: 0
+  Player_PercentOfTeleportation: 0
   Isdoor: 1
   DoorOutside: 0
   scene_name: 
@@ -21494,7 +21494,7 @@ MonoBehaviour:
   Player: {fileID: 424894505}
   Triggers_Parent: {fileID: 1821946983}
   dir: 3
-  PercentOfTeleportation: 0
+  Player_PercentOfTeleportation: 0
   Isdoor: 1
   DoorOutside: 0
   scene_name: 

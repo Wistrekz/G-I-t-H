@@ -1848,7 +1848,7 @@ MonoBehaviour:
   Player: {fileID: 484382536}
   Triggers_Parent: {fileID: 74047592}
   dir: 3
-  PercentOfTeleportation: 0
+  Player_PercentOfTeleportation: 0
   Isdoor: 1
   DoorOutside: 0
   scene_name: Test_walking
@@ -3039,7 +3039,7 @@ MonoBehaviour:
   Player: {fileID: 484382536}
   Triggers_Parent: {fileID: 74047592}
   dir: 1
-  PercentOfTeleportation: 0.65
+  Player_PercentOfTeleportation: 0
   Isdoor: 0
   DoorOutside: 0
   scene_name: Test_walking
@@ -3287,7 +3287,7 @@ MonoBehaviour:
   Player: {fileID: 484382536}
   Triggers_Parent: {fileID: 74047592}
   dir: 2
-  PercentOfTeleportation: 4
+  Player_PercentOfTeleportation: 0
   Isdoor: 1
   DoorOutside: 0
   scene_name: Test_walking
@@ -3565,7 +3565,7 @@ MonoBehaviour:
   Player: {fileID: 484382536}
   Triggers_Parent: {fileID: 74047592}
   dir: 2
-  PercentOfTeleportation: 4
+  Player_PercentOfTeleportation: 0
   Isdoor: 1
   DoorOutside: 0
   scene_name: Test_walking
@@ -4447,7 +4447,7 @@ MonoBehaviour:
   Player: {fileID: 484382536}
   Triggers_Parent: {fileID: 74047592}
   dir: 0
-  PercentOfTeleportation: 0.65
+  Player_PercentOfTeleportation: 0
   Isdoor: 0
   DoorOutside: 0
   scene_name: Test_walking
@@ -4796,7 +4796,7 @@ MonoBehaviour:
   Player: {fileID: 484382536}
   Triggers_Parent: {fileID: 74047592}
   dir: 3
-  PercentOfTeleportation: 0
+  Player_PercentOfTeleportation: 0
   Isdoor: 1
   DoorOutside: 0
   scene_name: Test_walking
@@ -5119,7 +5119,7 @@ MonoBehaviour:
   Player: {fileID: 484382536}
   Triggers_Parent: {fileID: 74047592}
   dir: 3
-  PercentOfTeleportation: 100
+  Player_PercentOfTeleportation: 90
   Isdoor: 1
   DoorOutside: 1
   scene_name: Test_walking

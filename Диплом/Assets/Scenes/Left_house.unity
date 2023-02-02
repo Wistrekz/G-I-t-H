@@ -607,7 +607,7 @@ MonoBehaviour:
   Player: {fileID: 1679484024}
   Triggers_Parent: {fileID: 1007889923}
   dir: 3
-  PercentOfTeleportation: 16
+  Player_PercentOfTeleportation: 100
   Isdoor: 1
   DoorOutside: 1
   scene_name: Test_walking
@@ -1085,7 +1085,7 @@ MonoBehaviour:
   Player: {fileID: 1679484024}
   Triggers_Parent: {fileID: 1007889923}
   dir: 2
-  PercentOfTeleportation: 1
+  Player_PercentOfTeleportation: 0
   Isdoor: 1
   DoorOutside: 0
   scene_name: 
@@ -1575,7 +1575,7 @@ MonoBehaviour:
   Player: {fileID: 1679484024}
   Triggers_Parent: {fileID: 1007889923}
   dir: 2
-  PercentOfTeleportation: 1
+  Player_PercentOfTeleportation: 0
   Isdoor: 1
   DoorOutside: 0
   scene_name: 
