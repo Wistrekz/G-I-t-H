@@ -24,8 +24,10 @@ public class settings_methods : MonoBehaviour
     {
         Dictionary_files.Default_lang_settings();
         path_of_SetIn_Langs_forAll = path_of_SetIn_Langs;
+        Debug.Log(path_of_SetIn_Langs);
         StreamReader sr = new StreamReader(path_of_SetIn_Langs);
         string Langs_and_marks = sr.ReadToEnd();
+        Debug.Log(Langs_and_marks);
         sr.Close();
         
         string[] Langs_and_marks_mas = Langs_and_marks.Split(new string[2] { " - ", Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);

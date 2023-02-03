@@ -328,7 +328,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3abbe641c1339e744840ac8d05f6a43d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Camera: {fileID: 0}
   objToFollow: {fileID: 1679484029}
+  IsInHouse: 1
+  leftLimit: 0
+  rightLimit: 0
+  UpLimit: 0
+  DownLimit: 0
 --- !u!1 &561206158
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,6 +963,7 @@ MonoBehaviour:
   Player_PercentOfTeleportation: 0
   Isdoor: 1
   DoorOutside: 0
+  OnTheStreets: 0
   scene_name: 
   Block_numAdress: 1
   IsOneHouse: 1
@@ -1447,6 +1454,7 @@ MonoBehaviour:
   Player_PercentOfTeleportation: 0
   Isdoor: 1
   DoorOutside: 0
+  OnTheStreets: 0
   scene_name: 
   Block_numAdress: 0
   IsOneHouse: 1
@@ -1564,6 +1572,7 @@ MonoBehaviour:
   Player_PercentOfTeleportation: 2
   Isdoor: 1
   DoorOutside: 1
+  OnTheStreets: 0
   scene_name: Test_walking
   Block_numAdress: 0
   IsOneHouse: 0

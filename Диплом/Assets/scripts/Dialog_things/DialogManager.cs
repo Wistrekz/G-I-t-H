@@ -29,11 +29,17 @@ public class DialogManager : MonoBehaviour
 
     public void Update()
     {
+        Debug.Log($"{inTrigger}, {inscript}");
         if (inTrigger && inscript)
         {
             if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
             {
                 DisplayNextReplics();
+                foreach(string f in replics)
+                {
+                    Debug.Log(f);
+                    
+                }
             }
         }
     }
@@ -45,6 +51,8 @@ public class DialogManager : MonoBehaviour
         number = 0;
         inTrigger = true;
         inscript = true;
+        DisplayNextReplics();
+        Debug.Log($"{inTrigger}, {inscript}");
     }
 
     public void DisplayNextReplics()
@@ -52,7 +60,6 @@ public class DialogManager : MonoBehaviour
         if (number == replics.Length)
         {
             Invoke(nameof(EndDialog), 0.1f);
-            number = 0;
             return;
         }
         else
@@ -82,7 +89,8 @@ public class DialogManager : MonoBehaviour
         FindObjectOfType<moving>().StartMoving();
         inTrigger = false;
         inscript = false;
-        
+        number = 0;
+        Debug.Log($"{inTrigger}, {inscript}");
     }
 
     /*

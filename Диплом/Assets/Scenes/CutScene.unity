@@ -252,7 +252,7 @@ MonoBehaviour:
   dialogtext: {fileID: 1913419997}
   panel: {fileID: 633993753}
   nametext: {fileID: 1202116310}
-  path: Assets/Languages_/ru_startcutscene.xml
+  path: Assets/Languages_/ru/ru_startcutscene.xml
   path_artists_info: Assets/Languages_/People_color.txt
   animator: {fileID: 573328279}
 --- !u!114 &510172464
@@ -638,7 +638,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 976558525}
-  - component: {fileID: 976558526}
   m_Layer: 0
   m_Name: Artists
   m_TagString: Untagged
@@ -660,18 +659,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &976558526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 976558524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aacc43aea3e63fe41a2afc3a04475f32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1191892435
 GameObject:
   m_ObjectHideFlags: 0

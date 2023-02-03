@@ -33,14 +33,13 @@ public class DialogStart : MonoBehaviour
         {
             IsIntrigger = true;
         }
-        else
-        {
-            IsIntrigger = false;
-        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        IsIntrigger = false;
+        if (collision.gameObject.name == "Hans")
+        {
+            IsIntrigger = false;
+        }
     }
     private void DialogArea()
     {   
@@ -54,11 +53,12 @@ public class DialogStart : MonoBehaviour
         }
         else
         {
-            if ((Input.GetButtonDown("Fire1") && !dm.inscript) || (Input.GetButtonDown("Fire2") && !dm.inscript))
+            if ((Input.GetButtonDown("Fire1") && IsIntrigger) || (Input.GetButtonDown("Fire2") && IsIntrigger))
             {
                 Debug.Log("ddddddd");
                 IsMove.StopMoving();
                 dm.StartDialog();
+                IsIntrigger = false;
             }
         }
         

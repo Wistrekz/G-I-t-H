@@ -21,6 +21,7 @@ public class Room_traveler : MonoBehaviour
     public bool Isdoor;
     [Header("Ouside_sets")]
     public bool DoorOutside;
+    public bool OnTheStreets;
     public string scene_name;
     [Header("Inside_sets")]
     public int Block_numAdress;
@@ -29,7 +30,6 @@ public class Room_traveler : MonoBehaviour
     public static direction direct;
 
     private bool intrigger;
-    private bool SceneLoaded;
     private Vector2[] Teleport_Blocks_mas;
 
     private void Calc_rooms()
@@ -143,27 +143,36 @@ public class Room_traveler : MonoBehaviour
                     Debug.Log(Artists_marks.Player_coordinates);
                     Debug.Log(direct + $" {Artists_marks.Player_PercentOfTeleport}");
                 }
-                
             }
         }
         else
         {
-            if (DoorOutside)
+            if(!OnTheStreets)
             {
-                SceneManager.LoadScene(scene_name);
-                Player.transform.position = Artists_marks.Player_coordinates;
+                if (DoorOutside)
+                {
+                    Debug.Log("q2134");
+                    Artists_marks.Player_IsTeleported_Outside = true;
+                    Set_static_sets();
+                    SceneManager.LoadScene(scene_name);
+                    Debug.Log(direct + $" {Artists_marks.Player_PercentOfTeleport}");
+
+                }
+                if (!DoorOutside)
+                {
+                    Artists_marks.Player_coordinates = gameObject.transform.position;
+                    Set_static_sets();
+                    SceneManager.LoadScene(scene_name);
+                    Debug.Log(Player.transform.position);
+                    Debug.Log(Artists_marks.Player_coordinates);
+                    Debug.Log(direct + $" {Artists_marks.Player_PercentOfTeleport}");
+                }
             }
             else
             {
-                Artists_marks.Player_coordinates = gameObject.transform.position;
-                SceneManager.LoadScene(scene_name);
-            }
-        }
-    }
 
-    public static void Teleport_confirm()
-    {
-        
+            }  
+        }
     }
 
     private void Set_static_sets()
@@ -194,6 +203,7 @@ public class Room_traveler : MonoBehaviour
                 OutsideMemoring_and_Teleportation();
             }
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -202,13 +212,12 @@ public class Room_traveler : MonoBehaviour
         {
             intrigger = true;
         }
-        else
-        {
-            intrigger = false;
-        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        intrigger = false;
+        if (collision.gameObject.name == "Hans")
+        {
+            intrigger = false;
+        }
     }
 }

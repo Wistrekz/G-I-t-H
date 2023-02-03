@@ -18,7 +18,6 @@ public class menu_translator : MonoBehaviour
         foreach(Text u in menu_texts)
         {
             u.text = Dictionary_files.GetLangDictionary(path, u.name)[0];
-
         }
     }
 }
