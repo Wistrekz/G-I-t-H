@@ -523,6 +523,7 @@ MonoBehaviour:
   Player_PercentOfTeleportation: 3
   Isdoor: 1
   DoorOutside: 0
+  OnTheStreets: 0
   scene_name: Down1_house
   Block_numAdress: 0
   IsOneHouse: 0
@@ -2075,6 +2076,7 @@ MonoBehaviour:
   Player_PercentOfTeleportation: 3
   Isdoor: 1
   DoorOutside: 0
+  OnTheStreets: 0
   scene_name: Down_house
   Block_numAdress: 0
   IsOneHouse: 0
@@ -5514,6 +5516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 519420028}
   objToFollow: {fileID: 424894506}
+  IsInHouse: 0
   leftLimit: -33.63
   rightLimit: 45.4
   UpLimit: 26.5
@@ -8120,6 +8123,7 @@ MonoBehaviour:
   Player_PercentOfTeleportation: 3
   Isdoor: 1
   DoorOutside: 0
+  OnTheStreets: 0
   scene_name: church_house
   Block_numAdress: 0
   IsOneHouse: 0
@@ -8459,6 +8463,7 @@ MonoBehaviour:
   Player_PercentOfTeleportation: 88
   Isdoor: 1
   DoorOutside: 0
+  OnTheStreets: 0
   scene_name: General_house
   Block_numAdress: 0
   IsOneHouse: 0
@@ -8971,6 +8976,7 @@ MonoBehaviour:
   Player_PercentOfTeleportation: 3
   Isdoor: 1
   DoorOutside: 0
+  OnTheStreets: 0
   scene_name: Sheriff_house
   Block_numAdress: 0
   IsOneHouse: 0
@@ -9102,6 +9108,7 @@ MonoBehaviour:
   Player_PercentOfTeleportation: 3
   Isdoor: 1
   DoorOutside: 0
+  OnTheStreets: 0
   scene_name: Left_house
   Block_numAdress: 0
   IsOneHouse: 0
@@ -10362,6 +10369,7 @@ MonoBehaviour:
   Player_PercentOfTeleportation: 3
   Isdoor: 1
   DoorOutside: 0
+  OnTheStreets: 0
   scene_name: Left_up_house
   Block_numAdress: 0
   IsOneHouse: 0
@@ -10869,6 +10877,7 @@ MonoBehaviour:
   Player_PercentOfTeleportation: 3
   Isdoor: 1
   DoorOutside: 0
+  OnTheStreets: 0
   scene_name: Central_house
   Block_numAdress: 0
   IsOneHouse: 0
@@ -12855,7 +12864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -16051,6 +16060,7 @@ MonoBehaviour:
   Player_PercentOfTeleportation: 0
   Isdoor: 0
   DoorOutside: 0
+  OnTheStreets: 0
   scene_name: 
   Block_numAdress: 0
   IsOneHouse: 0
@@ -19723,6 +19733,7 @@ MonoBehaviour:
   Player_PercentOfTeleportation: 3
   Isdoor: 1
   DoorOutside: 0
+  OnTheStreets: 0
   scene_name: Pri_church_house
   Block_numAdress: 0
   IsOneHouse: 0
@@ -20895,6 +20906,7 @@ MonoBehaviour:
   Player_PercentOfTeleportation: 3
   Isdoor: 1
   DoorOutside: 0
+  OnTheStreets: 0
   scene_name: Budka
   Block_numAdress: 0
   IsOneHouse: 0
@@ -21274,6 +21286,7 @@ MonoBehaviour:
   Player_PercentOfTeleportation: 3
   Isdoor: 1
   DoorOutside: 0
+  OnTheStreets: 0
   scene_name: Central2_house
   Block_numAdress: 0
   IsOneHouse: 0
@@ -21997,6 +22010,7 @@ MonoBehaviour:
   Player_PercentOfTeleportation: 3
   Isdoor: 1
   DoorOutside: 0
+  OnTheStreets: 0
   scene_name: Bar_house
   Block_numAdress: 0
   IsOneHouse: 0
