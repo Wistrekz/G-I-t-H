@@ -4,7 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class Room_traveler : MonoBehaviour
 {
-    
+    public static bool IGotoRoom;
+    public static bool TravelToLocation;
 
     public enum direction
     {
@@ -15,29 +16,16 @@ public class Room_traveler : MonoBehaviour
     }
     [Header("Def_sets")]
     public GameObject Player;
-    public GameObject Triggers_Parent;
+    public GameObject Location_sprite;
+    public static GameObject stat_Location_sprite;
     public direction dir;
     public float Player_PercentOfTeleportation;
     public bool Isdoor;
     [Header("Ouside_sets")]
-    public bool DoorOutside;
+    public GameObject Teleport_subject;
     public bool OnTheStreets;
-    public string scene_name;
-    [Header("Inside_sets")]
-    public int Block_numAdress;
-    public bool IsOneHouse;
-
-    public static direction direct;
 
     private bool intrigger;
-    private Vector2[] Teleport_Blocks_mas;
-
-    private void Calc_rooms()
-    {
-        Teleport_Blocks_mas = new Vector2[Triggers_Parent.transform.childCount];
-        for (int i = 0; i < Triggers_Parent.transform.childCount; i++)
-            Teleport_Blocks_mas[i] = Triggers_Parent.transform.GetChild(i).transform.position;
-    }
 
     private void To_Teleport_Distance_Inside()
     {
@@ -63,145 +51,61 @@ public class Room_traveler : MonoBehaviour
         }
     }
 
-    private void To_Teleport_Distance(direction directon, float Player_PercentOfTeleportik)
+    private void Teleportation()
     {
-        switch (directon)
+        if(OnTheStreets)
         {
-            case direction.left:
-                Player.transform.position = new Vector2(Player.transform.position.x - (Math.Abs(Player.transform.lossyScale.x) / 100 * Player_PercentOfTeleportik), Player.transform.position.y);
-                Debug.Log(Player.transform.position);
-                break;
-            case direction.right:
-                Player.transform.position = new Vector2(Player.transform.position.x + (Math.Abs(Player.transform.lossyScale.x) / 100 * Player_PercentOfTeleportik), Player.transform.position.y);
-                Debug.Log(Player.transform.position);
-                break;
-            case direction.Up:
-                Player.transform.position = new Vector2(Player.transform.position.x, Player.transform.position.y + (Math.Abs(Player.transform.lossyScale.x) / 100 * Player_PercentOfTeleportik));
-                Debug.Log(Player.transform.position);
-                break;
-            case direction.Down:
-                Player.transform.position = new Vector2(Player.transform.position.x, Player.transform.position.y - (Math.Abs(Player.transform.lossyScale.x) / 100 * Player_PercentOfTeleportik));
-                Debug.Log(Player.transform.position);
-                break;
-
-        }
-    }
-
-    private void InsideMemoring_and_Teleportation()
-    {
-        if (Isdoor)
-        {
-            if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
+            if (Isdoor)
             {
-                Calc_rooms();
-                for (int i = 0; i < Teleport_Blocks_mas.Length; i++)
+                if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
                 {
-                    Debug.Log(Teleport_Blocks_mas[i]);
-                    if (i == Block_numAdress)
-                    {
-                        Player.transform.position = Teleport_Blocks_mas[i];
-                        To_Teleport_Distance_Inside();
-                    }
-                }
-            }
-        }
-        else
-        {
-            Calc_rooms();
-            for (int i = 0; i < Teleport_Blocks_mas.Length; i++)
-            {
-                if (i == Block_numAdress)
-                {
-                    Player.transform.position = Teleport_Blocks_mas[i];
+                    TravelToLocation = true;
+                    Player.transform.position = Teleport_subject.transform.position;
                     To_Teleport_Distance_Inside();
-                }
-            }
-        }
-    }
-
-    private void OutsideMemoring_and_Teleportation()
-    {
-        if (Isdoor)
-        {
-            if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
-            {
-                if(DoorOutside)
-                {
-                    Debug.Log("q2134");
-                    Artists_marks.Player_IsTeleported_Outside = true;
-                    Set_static_sets();
-                    SceneManager.LoadScene(scene_name);
-                    Debug.Log(direct + $" {Artists_marks.Player_PercentOfTeleport}");
-                    
-                }
-                else
-                {
-                    Artists_marks.Player_coordinates = gameObject.transform.position;
-                    Set_static_sets();
-                    SceneManager.LoadScene(scene_name);
-                    Debug.Log(Player.transform.position);
-                    Debug.Log(Artists_marks.Player_coordinates);
-                    Debug.Log(direct + $" {Artists_marks.Player_PercentOfTeleport}");
-                }
-            }
-        }
-        else
-        {
-            if(!OnTheStreets)
-            {
-                if (DoorOutside)
-                {
-                    Debug.Log("q2134");
-                    Artists_marks.Player_IsTeleported_Outside = true;
-                    Set_static_sets();
-                    SceneManager.LoadScene(scene_name);
-                    Debug.Log(direct + $" {Artists_marks.Player_PercentOfTeleport}");
-
-                }
-                if (!DoorOutside)
-                {
-                    Artists_marks.Player_coordinates = gameObject.transform.position;
-                    Set_static_sets();
-                    SceneManager.LoadScene(scene_name);
-                    Debug.Log(Player.transform.position);
-                    Debug.Log(Artists_marks.Player_coordinates);
-                    Debug.Log(direct + $" {Artists_marks.Player_PercentOfTeleport}");
                 }
             }
             else
             {
+                TravelToLocation = true;
+                Player.transform.position = Teleport_subject.transform.position;
+                To_Teleport_Distance_Inside();
+            }
+        }
+        else
+        {
+            if (Isdoor)
+            {
+                if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
+                {
+                    IGotoRoom = true;
+                    Player.transform.position = Teleport_subject.transform.position;
+                    To_Teleport_Distance_Inside();
+                }
+            }
+            else
+            {
+                IGotoRoom = false;
+                Player.transform.position = Teleport_subject.transform.position;
+                To_Teleport_Distance_Inside();
 
-            }  
+            }
         }
     }
 
-    private void Set_static_sets()
+    void Start()
     {
-        direct = dir;
-        Artists_marks.Player_PercentOfTeleport = Player_PercentOfTeleportation;
+        if(OnTheStreets)
+        {
+            stat_Location_sprite = Location_sprite;
+        }
     }
 
     public void Update()
     {
-        if (Artists_marks.Player_IsTeleported_Outside)
-        {
-            Debug.Log("3423y78f");
-            Player.transform.position = Artists_marks.Player_coordinates;
-            Debug.Log(Player.transform.position);
-            To_Teleport_Distance(direct, Artists_marks.Player_PercentOfTeleport);
-            Artists_marks.Player_IsTeleported_Outside = false;
-        }
         if (intrigger)
         {
             Debug.Log("sdfgg");
-            if (IsOneHouse)
-            {
-                InsideMemoring_and_Teleportation();
-            }
-            else
-            {
-                OutsideMemoring_and_Teleportation();
-            }
+            Teleportation();
         }
 
     }
