@@ -9,8 +9,14 @@ public class script_for_Events : MonoBehaviour
 {
     public static bool MissionGoing;
     public static bool Cutscenegoing;
+    public static int MissionNumber;
 
-    public static void FirstEvent1()
+    private void StartNewIvent()
+    {
+        MissionNumber++;
+    }
+
+    public static void Event1()
     {
 
     }
@@ -19,7 +25,19 @@ public class script_for_Events : MonoBehaviour
     {
         if(Input.GetButton("Fire3") || Input.GetButton("Fire4"))
         {
-
+            StartNewIvent();
+        }
+        switch(MissionNumber)
+        {
+            case 1:
+                Event1();
+                break;
+            case 2:
+                Event1();
+                break;
+            case 3:
+                Event1();
+                break;
         }
     }
 
