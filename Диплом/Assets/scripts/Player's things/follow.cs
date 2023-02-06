@@ -7,6 +7,7 @@ public class follow : MonoBehaviour
 {
     public GameObject Camera;
     public Transform objToFollow;
+    public GameObject Special_trigger_for_camera;
 
     private Vector3 deltaPos;
     private Vector3 oldPosition;

@@ -16,10 +16,33 @@ public class script_for_Events : MonoBehaviour
         MissionNumber++;
     }
 
+    public static void Event0()
+    {
+        
+    }
+
     public static void Event1()
     {
 
     }
+
+    public static void Event2()
+    {
+
+    }
+    public static void Event3()
+    {
+
+    }
+    public static void Event4()
+    {
+
+    }
+    public static void Event5()
+    {
+
+    }
+
 
     void Update()
     {
@@ -27,17 +50,23 @@ public class script_for_Events : MonoBehaviour
         {
             StartNewIvent();
         }
-        switch(MissionNumber)
+        if(MissionGoing)
         {
-            case 1:
-                Event1();
-                break;
-            case 2:
-                Event1();
-                break;
-            case 3:
-                Event1();
-                break;
+            switch (MissionNumber)
+            {
+                case 0:
+                    Event0();
+                    break;
+                case 1:
+                    Event1();
+                    break;
+                case 2:
+                    Event2();
+                    break;
+                case 3:
+                    Event3();
+                    break;
+            }
         }
     }
 
