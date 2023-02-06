@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Inventory_script : MonoBehaviour
 {
-    public GameObject Panel;
+    public GameObject Inventory_Panel;
+    public GameObject Inventory_Pick;
+    public GameObject Info_Panel;
+    public string path;
 
     public static bool Inventory_open;
 
@@ -17,11 +20,12 @@ public class Inventory_script : MonoBehaviour
         }
         if(Inventory_open)
         {
-            Panel.SetActive(true);
+            Inventory_Panel.SetActive(true);
+            Inventory_Pick.SetActive(true);
         }
         else
         {
-            Panel.SetActive(false);
+            Inventory_Panel.SetActive(false);
         }
     }
 }

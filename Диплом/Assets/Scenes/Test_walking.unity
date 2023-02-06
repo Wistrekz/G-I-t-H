@@ -6871,6 +6871,7 @@ GameObject:
   - component: {fileID: 424894508}
   - component: {fileID: 424894507}
   - component: {fileID: 424894510}
+  - component: {fileID: 424894511}
   m_Layer: 0
   m_Name: Hans
   m_TagString: Untagged
@@ -6886,7 +6887,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 424894505}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.6, y: -58.7, z: -3}
+  m_LocalPosition: {x: -7.3, y: -19.4, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 128414197}
@@ -7017,6 +7018,25 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 30fce678abbf15943830bf6e908f96b1, type: 3}
   - {fileID: 21300000, guid: 42ec11c0820a9f747b8786eb9f1ee1ee, type: 3}
   timing_frames: 22
+--- !u!95 &424894511
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424894505}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 89d4a9256fb6c684398550a2f7e0bd18, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &425898543
 GameObject:
   m_ObjectHideFlags: 0
@@ -16470,7 +16490,7 @@ MonoBehaviour:
   dir: 3
   Player_PercentOfTeleportation: 3
   Isdoor: 0
-  Teleport_subject: {fileID: 0}
+  Teleport_subject: {fileID: 2103812954}
   OnTheStreets: 1
 --- !u!61 &1192356916
 BoxCollider2D:
@@ -26350,6 +26370,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1821946984}
+  - component: {fileID: 1821946985}
   m_Layer: 0
   m_Name: Triggers
   m_TagString: Untagged
@@ -26385,6 +26406,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1821946985
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821946983}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 189265dd115ba1c4eb59aebc83c5392f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1829048441
 GameObject:
   m_ObjectHideFlags: 0

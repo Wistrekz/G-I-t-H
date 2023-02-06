@@ -9,6 +9,8 @@ public class follow : MonoBehaviour
     public Transform objToFollow;
     public GameObject Special_trigger_for_camera;
 
+    public static bool Player_inTrigger;
+
     private Vector3 deltaPos;
     private Vector3 oldPosition;
     private Vector2 Location;
@@ -19,6 +21,7 @@ public class follow : MonoBehaviour
     void Awake()
     {
         OnStartLocation();
+
     }
 
     void OnStartLocation()
@@ -47,7 +50,6 @@ public class follow : MonoBehaviour
     {
         transform.position = new Vector3(objToFollow.transform.position.x, objToFollow.transform.position.y, transform.position.z);
         deltaPos = transform.position - objToFollow.position;
-;
     }
     void Update()
     {
@@ -61,6 +63,17 @@ public class follow : MonoBehaviour
         oldPosition = transform.position;
         if(!Room_traveler.IGotoRoom)
             transform.position = new Vector3(Mathf.Clamp(transform.position.x, leftLimit, rightLimit), Mathf.Clamp(transform.position.y, DownLimit, UpLimit), transform.position.z);
+
+        if(!Player_inTrigger)
+        {
+            Room_traveler.IGotoRoom = true;
+        }
+        if(Player_inTrigger)
+        {
+            Room_traveler.IGotoRoom = false;
+        }
+        Debug.Log(Player_inTrigger);
+        Debug.Log(Room_traveler.IGotoRoom);
     }
 
     private void OnDrawGizmos()
@@ -70,5 +83,16 @@ public class follow : MonoBehaviour
         Gizmos.DrawLine(new Vector2(leftLimit, DownLimit), new Vector2(rightLimit, DownLimit));
         Gizmos.DrawLine(new Vector2(leftLimit, UpLimit), new Vector2(leftLimit, DownLimit));
         Gizmos.DrawLine(new Vector2(rightLimit, UpLimit), new Vector2(rightLimit, DownLimit));
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.gameObject)
+        {
+            Player_inTrigger = true;
+        }
+        if (collision.gameObject.name != "Hans")
+        {
+            Player_inTrigger = false;
+        }
     }
 }
