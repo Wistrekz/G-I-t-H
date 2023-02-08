@@ -9,13 +9,13 @@ public class Inventory_storage : MonoBehaviour
 
     public static string PathInformation;
 
-    public static Inventory_Storage[] Player_inventory;
+    public static List<Inventory_Storage> Player_inventory;
 
     [System.Serializable]
     public struct Inventory_Storage
     {
         public string name;
-        public string pathtoSprite;
+        public Sprite Item_Sprite;
     }
     public List<Inventory_Storage> Items_Storage;
     public static List<Inventory_Storage> _Inventory_Storage;
@@ -25,4 +25,6 @@ public class Inventory_storage : MonoBehaviour
         _Inventory_Storage = Items_Storage;
         PathInformation = Dictionary_files.Mark_Reader(pathToInfo);
     }
+
+
 }

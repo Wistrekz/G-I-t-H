@@ -21,7 +21,7 @@ public class follow : MonoBehaviour
     void Awake()
     {
         OnStartLocation();
-
+        Dictionary_files.Default_lang_settings();
     }
 
     void OnStartLocation()
@@ -72,8 +72,6 @@ public class follow : MonoBehaviour
         {
             Room_traveler.IGotoRoom = false;
         }
-        Debug.Log(Player_inTrigger);
-        Debug.Log(Room_traveler.IGotoRoom);
     }
 
     private void OnDrawGizmos()

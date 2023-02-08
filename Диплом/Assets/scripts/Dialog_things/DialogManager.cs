@@ -29,7 +29,6 @@ public class DialogManager : MonoBehaviour
 
     public void Update()
     {
-        Debug.Log($"{inTrigger}, {inscript}");
         if (inTrigger && inscript)
         {
             if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))

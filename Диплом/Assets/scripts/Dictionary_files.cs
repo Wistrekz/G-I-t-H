@@ -87,7 +87,6 @@ public class Dictionary_files : MonoBehaviour
             if(r % 2 != 0)
             {
                 marks[i] = Langs_and_marks_mas[r];
-                Debug.Log(marks[i]);
                 i++;
             }
         }
