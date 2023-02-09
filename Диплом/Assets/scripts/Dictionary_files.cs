@@ -21,7 +21,7 @@ public class Dictionary_files : MonoBehaviour
 
         foreach (XmlNode item in wordList)
         {
-            if (item.Attributes["name"].Value.Contains(obj_name))
+            if (item.Attributes["name"].Value.Contains(obj_name) || item.Attributes["name"].Value == obj_name)
             {
                 Replics.Add(item.InnerText);
             }
@@ -104,6 +104,13 @@ public class Dictionary_files : MonoBehaviour
     public static void Default_lang_settings()
     {
         settings_methods.Language_mark_for_all = "ru";
+        settings_methods.path_of_SetIn_Langs_forAll = "Assets/Languages_/Settings/Languages_l_marks.txt";
+
+    }
+
+    public static void NotDefault_lang_settings()
+    {
+        settings_methods.Language_mark_for_all = "en";
         settings_methods.path_of_SetIn_Langs_forAll = "Assets/Languages_/Settings/Languages_l_marks.txt";
 
     }

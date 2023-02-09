@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Inventory_storage : MonoBehaviour
 {
-    public int count_Items;
     public string pathToInfo;
 
     public static string PathInformation;
 
-    public static List<Inventory_Storage> Player_inventory;
+    public static List<Inventory_Storage> Player_inventory = new List<Inventory_Storage>();
 
     [System.Serializable]
     public struct Inventory_Storage
@@ -17,8 +16,10 @@ public class Inventory_storage : MonoBehaviour
         public string name;
         public Sprite Item_Sprite;
     }
-    public List<Inventory_Storage> Items_Storage;
-    public static List<Inventory_Storage> _Inventory_Storage;
+    public Inventory_Storage[] Items_Storage;
+    public static Inventory_Storage[] _Inventory_Storage;
+
+
 
     void Start()
     {
