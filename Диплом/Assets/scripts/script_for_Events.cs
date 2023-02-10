@@ -7,6 +7,12 @@ using UnityEngine.UI;
 
 public class script_for_Events : MonoBehaviour
 {
+    [Header("0_Event")]
+    public Animator Animations;
+    public bool jier;
+    public GameObject[] objects_scenes;
+
+
     public static bool MissionGoing;
     public static bool Cutscenegoing;
     public static int MissionNumber;
