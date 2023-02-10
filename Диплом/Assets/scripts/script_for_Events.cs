@@ -7,52 +7,88 @@ using UnityEngine.UI;
 
 public class script_for_Events : MonoBehaviour
 {
+    [Header("general_sets")]
+    public int MissionNumber;
+    [Space]
     [Header("0_Event")]
-    public Animator Animations;
+    public Animator Animations_ev0;
+    public GameObject[] objects_scenes_ev0;
+    [Header("1_Event")]
+    public Animator Animations_ev1;
     public bool jier;
     public GameObject[] objects_scenes;
 
 
+
     public static bool MissionGoing;
     public static bool Cutscenegoing;
-    public static int MissionNumber;
+    public static string SearchingItem;
+
+    private bool EventEnd;
 
     private void StartNewIvent()
     {
         MissionNumber++;
     }
 
-    public static void Event0()
+    public void Event0()
     {
-        
+        Cutscenegoing = true;
+
+        if(EventEnd)
+        {
+            StartNewIvent();
+            EventEnd = false;
+        }
     }
 
-    public static void Event1()
+    public void Event1()
     {
 
+        if (EventEnd)
+        {
+            StartNewIvent();
+            EventEnd = false;
+        }
     }
 
-    public static void Event2()
+    public void Event2()
     {
-
+        if (EventEnd)
+        {
+            StartNewIvent();
+            EventEnd = false;
+        }
     }
-    public static void Event3()
+    public void Event3()
     {
-
+        if(EventEnd)
+        {
+            StartNewIvent();
+            EventEnd = false;
+        }
     }
-    public static void Event4()
+    public void Event4()
     {
-
+        if (EventEnd)
+        {
+            StartNewIvent();
+            EventEnd = false;
+        }
     }
-    public static void Event5()
+    public void Event5()
     {
-
+        if (EventEnd)
+        {
+            StartNewIvent();
+            EventEnd = false;
+        }
     }
 
 
     void Update()
     {
-        if(Input.GetButton("Fire3") || Input.GetButton("Fire4"))
+        if(PlayerHaveThisItem(SearchingItem))
         {
             StartNewIvent();
         }
@@ -86,5 +122,11 @@ public class script_for_Events : MonoBehaviour
         {
             Dictionary_files.Default_lang_settings();
         }
+    }
+
+    public bool PlayerHaveThisItem(string ItemName)
+    {
+        bool IsHehave = false;
+        return IsHehave;
     }
 }

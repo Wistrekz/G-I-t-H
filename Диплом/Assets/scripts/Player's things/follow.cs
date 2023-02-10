@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class follow : MonoBehaviour
 {
+    public bool JustFollow;
     public GameObject Camera;
     public Transform objToFollow;
     public GameObject Special_trigger_for_camera;
@@ -53,24 +54,32 @@ public class follow : MonoBehaviour
     }
     void Update()
     {
-        if(Room_traveler.TravelToLocation)
+        if(JustFollow)
         {
-            Set_Loc_borders();
-            Room_traveler.TravelToLocation = false;
-            Room_traveler.IGotoRoom = false;
+            transform.position = objToFollow.position + deltaPos;
+            oldPosition = transform.position;
         }
-        transform.position = objToFollow.position + deltaPos;
-        oldPosition = transform.position;
-        if(!Room_traveler.IGotoRoom)
-            transform.position = new Vector3(Mathf.Clamp(transform.position.x, leftLimit, rightLimit), Mathf.Clamp(transform.position.y, DownLimit, UpLimit), transform.position.z);
+        else
+        {
+            if (Room_traveler.TravelToLocation)
+            {
+                Set_Loc_borders();
+                Room_traveler.TravelToLocation = false;
+                Room_traveler.IGotoRoom = false;
+            }
+            transform.position = objToFollow.position + deltaPos;
+            oldPosition = transform.position;
+            if (!Room_traveler.IGotoRoom)
+                transform.position = new Vector3(Mathf.Clamp(transform.position.x, leftLimit, rightLimit), Mathf.Clamp(transform.position.y, DownLimit, UpLimit), transform.position.z);
 
-        if(!Player_inTrigger)
-        {
-            Room_traveler.IGotoRoom = true;
-        }
-        if(Player_inTrigger)
-        {
-            Room_traveler.IGotoRoom = false;
+            if (!Player_inTrigger)
+            {
+                Room_traveler.IGotoRoom = true;
+            }
+            if (Player_inTrigger)
+            {
+                Room_traveler.IGotoRoom = false;
+            }
         }
     }
 

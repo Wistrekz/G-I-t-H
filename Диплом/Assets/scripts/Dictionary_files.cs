@@ -13,6 +13,8 @@ public class Dictionary_files : MonoBehaviour
 
     private static string[] marks;
 
+    public bool UseDefaultSets, UseNotDefaultSets;
+
     public static string[] GetLangDictionary(string langFilepath, string obj_name)
     {
         XmlDocument xmlDoc = new XmlDocument();
@@ -114,4 +116,27 @@ public class Dictionary_files : MonoBehaviour
         settings_methods.path_of_SetIn_Langs_forAll = "Assets/Languages_/Settings/Languages_l_marks.txt";
 
     }
+    private void Start()
+    {
+        if(UseDefaultSets)
+        {
+            Non_static_Default_lang_settings();
+        }
+        if(UseNotDefaultSets)
+        {
+            Non_static_NotDefault_lang_settings();
+        }
+    }
+
+    public void Non_static_Default_lang_settings()
+    {
+        Default_lang_settings();
+    }
+
+    public static void Non_static_NotDefault_lang_settings()
+    {
+        NotDefault_lang_settings();
+    }
+
+
 }
