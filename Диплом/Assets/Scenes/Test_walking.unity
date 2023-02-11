@@ -7155,7 +7155,7 @@ Animator:
   m_GameObject: {fileID: 424894505}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 89d4a9256fb6c684398550a2f7e0bd18, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7a5491566144cc04ca34085cb7b0cf40, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -9910,12 +9910,12 @@ GameObject:
   - component: {fileID: 700211414}
   - component: {fileID: 700211413}
   m_Layer: 5
-  m_Name: Square
+  m_Name: BlackScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &700211412
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22739,6 +22739,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1524780421}
+  - component: {fileID: 1524780422}
   m_Layer: 0
   m_Name: Raztemnenie
   m_TagString: Untagged
@@ -22760,6 +22761,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1524780422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524780420}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c14d7912307841044a8d177cad26e906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1526313898
 GameObject:
   m_ObjectHideFlags: 0
@@ -30792,6 +30805,59 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2090364483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2090364485}
+  - component: {fileID: 2090364484}
+  m_Layer: 0
+  m_Name: Events_controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2090364484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090364483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97562ed3b7a097043865d85ad6cbd2bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MissionNumber: 0
+  Animations_ev0: {fileID: 424894511}
+  objects_forDestroy_ev0: []
+  black_screen: {fileID: 700211413}
+  black_screen_step: 0.05
+  black_screen_interval: 0.01
+  Path: Assets/Languages_/ru/Day1/ru_Event0cutscene.xml
+  Animations_ev1: {fileID: 0}
+  jier: 0
+  objects_scenes: []
+--- !u!4 &2090364485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090364483}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 192.7617, y: 414.7645, z: -372.44247}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2095437921
 GameObject:
   m_ObjectHideFlags: 0

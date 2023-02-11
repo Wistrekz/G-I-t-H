@@ -12,7 +12,10 @@ public class script_for_Events : MonoBehaviour
     [Space]
     [Header("0_Event")]
     public Animator Animations_ev0;
-    public GameObject[] objects_scenes_ev0;
+    public GameObject[] objects_forDestroy_ev0;
+    public Image black_screen;
+    public float black_screen_step, black_screen_interval;
+    public string Path;
     [Header("1_Event")]
     public Animator Animations_ev1;
     public bool jier;
@@ -20,9 +23,13 @@ public class script_for_Events : MonoBehaviour
 
 
 
-    public static bool MissionGoing;
+    public static bool MissionGoing = true;
     public static bool Cutscenegoing;
+    public static bool Special_watcher;
+    public static bool blackscreen = true;
+    public static bool DialogEnd, DialogStart = true;
     public static string SearchingItem;
+
 
     private bool EventEnd;
 
@@ -33,13 +40,38 @@ public class script_for_Events : MonoBehaviour
 
     public void Event0()
     {
-        Cutscenegoing = true;
-
-        if(EventEnd)
+        Debug.Log("wer");
+        if(blackscreen)
         {
-            StartNewIvent();
-            EventEnd = false;
+            Debug.Log("wertyu7eikr");
+            Appearance.Dissappear(black_screen, black_screen_step, black_screen_interval);
         }
+        if(!blackscreen)
+        {
+            Debug.Log("wertyu7eikr11111");
+            DialogManager.Call_Cutscene_Dialog(Path);
+            if (DialogEnd)
+            {
+                Animations_ev0.SetBool("dialog1End", true);
+                DialogEnd = false;
+                Appearance.Appears(black_screen, black_screen_step, black_screen_interval);
+                if (blackscreen)
+                {
+                    foreach (GameObject f in objects_forDestroy_ev0)
+                    {
+                        Destroy(f);
+                    }
+                    EventEnd = true;
+                }
+            }
+
+            if (EventEnd)
+            {
+                StartNewIvent();
+                EventEnd = false;
+            }
+        }
+        
     }
 
     public void Event1()
@@ -88,7 +120,7 @@ public class script_for_Events : MonoBehaviour
 
     void Update()
     {
-        if(PlayerHaveThisItem(SearchingItem))
+        if(PlayerHaveThisItem(SearchingItem) && SearchingItem != null)
         {
             StartNewIvent();
         }

@@ -76,6 +76,23 @@ public class Dictionary_files : MonoBehaviour
         return Colors_and_names_mas[Colors_and_names_mas.Length - 1];
     }
 
+    public static string GetLangDictionary_GetName(string Filepath, string replic)
+    {
+        string replic_name = null;
+        XmlDocument xmlDoc = new XmlDocument();
+        xmlDoc.Load(Filepath);
+        XmlNodeList wordList = xmlDoc.GetElementsByTagName("replic");
+        foreach (XmlNode item in wordList)
+        {
+            Debug.Log(item.Value);
+            if(item.Value == replic)
+            {
+                replic_name = item.Attributes["name"].Value;
+            }
+        }
+        return replic_name;
+    }
+
     public static string Mark_Reader(string path)
     {
         StreamReader sr = new StreamReader(settings_methods.path_of_SetIn_Langs_forAll);

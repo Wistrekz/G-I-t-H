@@ -15,12 +15,15 @@ public class follow : MonoBehaviour
     private Vector3 deltaPos;
     private Vector3 oldPosition;
     private Vector2 Location;
+    public static Transform Gameobject;
+
     private float Map_size_x, Map_size_y;
     [SerializeField]
     float leftLimit, rightLimit, UpLimit, DownLimit;
 
     void Awake()
     {
+        Gameobject = gameObject.transform;
         OnStartLocation();
         Dictionary_files.Default_lang_settings();
     }
@@ -81,6 +84,12 @@ public class follow : MonoBehaviour
                 Room_traveler.IGotoRoom = false;
             }
         }
+    }
+
+    public static void MoveCameraTo(Transform NextPosition)
+    {
+        var nextPosition = Vector3.Lerp(Gameobject.position, new Vector3(NextPosition.position.x, NextPosition.position.y), Time.deltaTime);
+        Gameobject.position = nextPosition;
     }
 
     private void OnDrawGizmos()

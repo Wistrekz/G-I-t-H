@@ -22,25 +22,21 @@ public class Dialog_cutscene : MonoBehaviour
 
     private UnityEngine.Color char_color;
 
-    public void Start()
-    {
-        path = Dictionary_files.Mark_Reader(path);
-        replics = Dictionary_files.GetLangDictionary(path, true);
-    }
-
 
 
 
     public void Update()
     {
-        if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
-        {
-            DisplayNextReplics();
-        }
+            if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
+            {
+                DisplayNextReplics();
+            }
     }
 
     public void StartDialog()
     {
+        path = Dictionary_files.Mark_Reader(path);
+        replics = Dictionary_files.GetLangDictionary(path, true);
         panel.SetActive(true);
     }
 
@@ -48,7 +44,6 @@ public class Dialog_cutscene : MonoBehaviour
     {
         if (rep_num == replics.Length)
         {
-            Debug.Log("preend");
             Invoke(nameof(EndDialog), 0.1f);
             rep_num = 0;
             return;
@@ -66,11 +61,6 @@ public class Dialog_cutscene : MonoBehaviour
         /*
         StopAllCoroutines();
         StartCoroutine(Typereplic(replic));*/
-    }
-
-    public void NextScene(int scene_num)
-    {
-        SceneManager.LoadScene(scene_num);
     }
     /*
     IEnumerator Typereplic(string replic)

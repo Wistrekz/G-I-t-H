@@ -5,32 +5,60 @@ using UnityEngine.UI;
 
 public class Appearance : MonoBehaviour
 {
-    public Image black_screen;
-    public float step;
 
-    public static bool disappear, appear;
-
-    private void Update()
+    public static void Dissappear(Image image, float step, float interval)
     {
-        if(disappear)
-        {
-            black_screen.color = new Color(black_screen.color.r, black_screen.color.g, black_screen.color.b, black_screen.color.a - step);
-            if(black_screen.color.a == 0)
+            image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a - step);
+            Appearance.Tars(interval);
+        Debug.Log(image.color.a);
+            if (image.color.a <= 0)
             {
-                disappear = false;
+                script_for_Events.blackscreen = false;
+                return;
+            }
+    }
+    public static void Dissappear(Image image, float step, float interval, float opacity)
+    {
+        for (; true;)
+        {
+            image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a - step);
+            Appearance.Tars(interval);
+            if (image.color.a == opacity)
+            {
+                script_for_Events.blackscreen = false;
+                return;
             }
         }
-        if(appear)
+    }
+    public static void Appears(Image image, float step, float interval)
+    {
+        for (; true;)
         {
-            black_screen.color = new Color(black_screen.color.r, black_screen.color.g, black_screen.color.b, black_screen.color.a + step);
-            if (black_screen.color.a == 0)
+            image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a - step);
+            Appearance.Tars(interval);
+            if (image.color.a == 1)
             {
-                disappear = false;
+                script_for_Events.blackscreen = true;
+                return;
             }
         }
     }
 
-    public IEnumerator Tars(float Times)
+    public static void Appears(Image image, float step, float interval, float opacity)
+    {
+        for (; true;)
+        {
+            image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a - step);
+            Appearance.Tars(interval);
+            if (image.color.a == opacity)
+            {
+                
+                return;
+            }
+        }
+    }
+
+    public static IEnumerator Tars(float Times)
     {
         yield return new WaitForSeconds(Times);
     }
