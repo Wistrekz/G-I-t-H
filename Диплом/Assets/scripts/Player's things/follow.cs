@@ -8,7 +8,8 @@ public class follow : MonoBehaviour
     public bool JustFollow;
     public GameObject Camera;
     public Transform objToFollow;
-    public GameObject Special_trigger_for_camera;
+    public GameObject[] Special_triggers_for_camera;
+    public GameObject[] SpritesInTriggers;
 
     public static bool Player_inTrigger;
 
@@ -38,16 +39,24 @@ public class follow : MonoBehaviour
 
     void Set_Loc_borders()
     {
-        Room_traveler.IGotoRoom = true;
-        Location = Room_traveler.stat_Location_sprite.transform.position;
-        var bounds = Room_traveler.stat_Location_sprite.GetComponent<SpriteRenderer>().bounds;
-        Map_size_x = bounds.size.x;
-        Map_size_y = bounds.size.y;
-        leftLimit = Location.x - (Map_size_x / 2);
-        rightLimit = Location.x + (Map_size_x / 2);
-        UpLimit = Location.y + (Map_size_y / 2);
-        DownLimit = Location.y - (Map_size_y / 2);
+        for(int i = 0; i < Special_triggers_for_camera.Length; i++)
+        {
+            if (Special_triggers_for_camera[i].GetComponent<BoxCollider2D>().gameObject.transform.position == new Vector3(Mathf.Clamp(transform.position.x, leftLimit, rightLimit), Mathf.Clamp(transform.position.y, DownLimit, UpLimit), transform.position.z))
+            {
+                Debug.Log("sdfefwe");
+                Location = SpritesInTriggers[i].transform.position;
+                var bounds = SpritesInTriggers[i].GetComponent<SpriteRenderer>().bounds;
+                Map_size_x = bounds.size.x;
+                Map_size_y = bounds.size.y;
+                leftLimit = Location.x - (Map_size_x / 2);
+                rightLimit = Location.x + (Map_size_x / 2);
+                UpLimit = Location.y + (Map_size_y / 2);
+                DownLimit = Location.y - (Map_size_y / 2);
+            }
+        }
+
         OnStartLocation();
+        //Камера ограничевается границами спрайта
     }
 
     void Start()
@@ -67,7 +76,7 @@ public class follow : MonoBehaviour
             if (Room_traveler.TravelToLocation)
             {
                 Set_Loc_borders();
-                Room_traveler.TravelToLocation = false;
+                Room_traveler.TravelToLocation = false;    //Путь в комнату. В комнате камера не ограничена
                 Room_traveler.IGotoRoom = false;
             }
             transform.position = objToFollow.position + deltaPos;
@@ -106,7 +115,7 @@ public class follow : MonoBehaviour
         {
             Player_inTrigger = true;
         }
-        if (collision.gameObject.name != "Hans")
+        if (collision.gameObject.name != "Hans" && collision.gameObject.name != "MainCamera")
         {
             Player_inTrigger = false;
         }

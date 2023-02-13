@@ -15,6 +15,7 @@ public class script_for_Events : MonoBehaviour
     public GameObject[] objects_forDestroy_ev0;
     public Image black_screen;
     public float black_screen_step, black_screen_interval;
+    public string PathToAnim;
     public string Path;
     [Header("1_Event")]
     public Animator Animations_ev1;
@@ -28,121 +29,10 @@ public class script_for_Events : MonoBehaviour
     public static bool Special_watcher;
     public static bool blackscreen = true;
     public static bool DialogEnd, DialogStart = true;
-    public static string SearchingItem;
+    public static string SearchingItem, PathToanim;
 
 
     private bool EventEnd;
-
-    private void StartNewIvent()
-    {
-        MissionNumber++;
-    }
-
-    public void Event0()
-    {
-        Debug.Log("wer");
-        if(blackscreen)
-        {
-            Debug.Log("wertyu7eikr");
-            Appearance.Dissappear(black_screen, black_screen_step, black_screen_interval);
-        }
-        if(!blackscreen)
-        {
-            Debug.Log("wertyu7eikr11111");
-            DialogManager.Call_Cutscene_Dialog(Path);
-            if (DialogEnd)
-            {
-                Animations_ev0.SetBool("dialog1End", true);
-                DialogEnd = false;
-                Appearance.Appears(black_screen, black_screen_step, black_screen_interval);
-                if (blackscreen)
-                {
-                    foreach (GameObject f in objects_forDestroy_ev0)
-                    {
-                        Destroy(f);
-                    }
-                    EventEnd = true;
-                }
-            }
-
-            if (EventEnd)
-            {
-                StartNewIvent();
-                EventEnd = false;
-            }
-        }
-        
-    }
-
-    public void Event1()
-    {
-
-        if (EventEnd)
-        {
-            StartNewIvent();
-            EventEnd = false;
-        }
-    }
-
-    public void Event2()
-    {
-        if (EventEnd)
-        {
-            StartNewIvent();
-            EventEnd = false;
-        }
-    }
-    public void Event3()
-    {
-        if(EventEnd)
-        {
-            StartNewIvent();
-            EventEnd = false;
-        }
-    }
-    public void Event4()
-    {
-        if (EventEnd)
-        {
-            StartNewIvent();
-            EventEnd = false;
-        }
-    }
-    public void Event5()
-    {
-        if (EventEnd)
-        {
-            StartNewIvent();
-            EventEnd = false;
-        }
-    }
-
-
-    void Update()
-    {
-        if(PlayerHaveThisItem(SearchingItem) && SearchingItem != null)
-        {
-            StartNewIvent();
-        }
-        if(MissionGoing)
-        {
-            switch (MissionNumber)
-            {
-                case 0:
-                    Event0();
-                    break;
-                case 1:
-                    Event1();
-                    break;
-                case 2:
-                    Event2();
-                    break;
-                case 3:
-                    Event3();
-                    break;
-            }
-        }
-    }
 
     public void NextScene(int scene_num)
     {

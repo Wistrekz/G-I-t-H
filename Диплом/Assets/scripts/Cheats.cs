@@ -22,7 +22,7 @@ public class Cheats : MonoBehaviour
         Debug.Log(ConsoleActivate);
         if(ConsoleActivate)
         {
-            Inventory_Add("Êëþ÷");
+            Inventory_Add("ï¿½ï¿½ï¿½ï¿½");
             Debug.Log("bruh");
             ConsoleActivate = false;
         }

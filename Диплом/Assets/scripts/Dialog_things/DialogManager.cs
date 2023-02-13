@@ -11,23 +11,30 @@ public class DialogManager : MonoBehaviour
 
     public Text dialogtext;
     public GameObject panel;
-    public bool inscript;
     public Text nametext;
     public string path, lang_mark;
+    public bool NPC_check;
 
     private string[] replics;
     private bool inTrigger;
     private int number;
 
 
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.name == gameObject.name)
+        {
+            inTrigger = true;
+        }
+    }
 
     public void Update()
     {
-        if (inTrigger && inscript && !script_for_Events.Cutscenegoing)
+        if (!script_for_Events.Cutscenegoing && NPC_check)
         {
             if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
             {
+                Debug.Log("NotCalled");
                 DisplayNextReplics();
                 foreach(string f in replics)
                 {
@@ -35,10 +42,11 @@ public class DialogManager : MonoBehaviour
                 }
             }
         }
-        if(script_for_Events.Cutscenegoing)
+        else
         {
             if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
             {
+                Debug.Log("Called");
                 Called_DisplayNextReplics();
                 foreach (string f in replics)
                 {
@@ -56,9 +64,8 @@ public class DialogManager : MonoBehaviour
         nametext.text = gameObject.name;
         number = 0;
         inTrigger = true;
-        inscript = true;
         DisplayNextReplics();
-        Debug.Log($"{inTrigger}, {inscript}");
+        Debug.Log($"{inTrigger}");
     }
 
     public void DisplayNextReplics()
@@ -94,16 +101,15 @@ public class DialogManager : MonoBehaviour
         panel.SetActive(false);
         FindObjectOfType<moving>().StartMoving();
         inTrigger = false;
-        inscript = false;
         number = 0;
-        Debug.Log($"{inTrigger}, {inscript}");
+        Debug.Log($"{inTrigger}");
     }
 
    /* 
 
 
 
-    Разделитель типов диалогов
+    пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 
 
@@ -132,7 +138,7 @@ public class DialogManager : MonoBehaviour
         nametext.text = replic_name;
         number = 0;
         Called_DisplayNextReplics();
-        Debug.Log($"{inTrigger}, {inscript}");
+        Debug.Log($"{inTrigger}");
     }
 
     public void Called_DisplayNextReplics()
@@ -162,7 +168,7 @@ public class DialogManager : MonoBehaviour
             script_for_Events.Cutscenegoing = false;
         }
         script_for_Events.DialogEnd = true;
-        Debug.Log($"{inTrigger}, {inscript}");
+        Debug.Log($"{inTrigger}");
     }
     /*
     public void Start()
