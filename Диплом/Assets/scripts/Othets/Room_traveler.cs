@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class Room_traveler : MonoBehaviour
 {
+    public Animator BlackScreen;
+
     public static bool IGotoRoom;
     public static bool TravelToLocation;
 
@@ -26,6 +28,7 @@ public class Room_traveler : MonoBehaviour
     public bool OnTheStreets;
 
     private bool intrigger;
+    private bool Teleport_activated;
 
     private void To_Teleport_Distance_Inside()
     {
@@ -59,16 +62,14 @@ public class Room_traveler : MonoBehaviour
             {
                 if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
                 {
-                    TravelToLocation = true;
-                    Player.transform.position = Teleport_subject.transform.position;
-                    To_Teleport_Distance_Inside();
+                    BlackScreen.SetInteger("ScreenState", 2);
+                    Teleport_activated = true;
                 }
             }
             else
             {
-                TravelToLocation = true;
-                Player.transform.position = Teleport_subject.transform.position;
-                To_Teleport_Distance_Inside();
+                BlackScreen.SetInteger("ScreenState", 2);
+                Teleport_activated = true;
             }
         }
         else
@@ -77,18 +78,45 @@ public class Room_traveler : MonoBehaviour
             {
                 if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
                 {
-                    IGotoRoom = true;
-                    Player.transform.position = Teleport_subject.transform.position;
-                    To_Teleport_Distance_Inside();
+                    BlackScreen.SetInteger("ScreenState", 2);
+                    Teleport_activated = true;
                 }
             }
             else
             {
-                IGotoRoom = false;
-                Player.transform.position = Teleport_subject.transform.position;
-                To_Teleport_Distance_Inside();
-
+                BlackScreen.SetInteger("ScreenState", 2);
+                Teleport_activated = true;
             }
+        }
+
+        Debug.Log(script_for_Events.blackscreen);
+
+        if(Teleport_activated)
+        {
+            TeleportInBlack();
+        }
+
+    }
+
+    public void TeleportInBlack()
+    {
+        if(script_for_Events.blackscreen && OnTheStreets)
+        {
+            BlackScreen.SetInteger("ScreenState", 1);
+            TravelToLocation = true;
+            Player.transform.position = Teleport_subject.transform.position;
+            To_Teleport_Distance_Inside();
+            script_for_Events.blackscreen = false;
+            Teleport_activated = false;
+        }
+        if(script_for_Events.blackscreen && !OnTheStreets)
+        {
+            BlackScreen.SetInteger("ScreenState", 1);
+            IGotoRoom = true;
+            Player.transform.position = Teleport_subject.transform.position;
+            To_Teleport_Distance_Inside();
+            script_for_Events.blackscreen = false;
+            Teleport_activated = false;
         }
     }
 
@@ -120,6 +148,13 @@ public class Room_traveler : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Hans")
+        {
+            intrigger = false;
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.name != "Hans")
         {
             intrigger = false;
         }

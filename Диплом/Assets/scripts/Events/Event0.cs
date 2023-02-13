@@ -9,13 +9,16 @@ public class Event0 : MonoBehaviour
     public GameObject[] objects_forDestroy_ev0;
     public Image black_screen;
     public string Path;
+    public GameObject Player;
 
     public static bool MissionGoing = true;
-    public static bool Cutscenegoing, EventEnd;
-    public static bool Special_watcher, NPCTalking = true;
-    public static bool blackscreen = true;
+    public static bool Cutscenegoing, AnimEnd;
+    public static bool Special_watcher;
     public static bool DialogEnd, DialogStart = true;
     public static string SearchingItem, PathToanim;
+
+    private int Completing;
+
 
     private void Update()
     {
@@ -24,40 +27,61 @@ public class Event0 : MonoBehaviour
 
     public void EvenT0()
     {
-        Cutscenegoing = true;
-        Debug.Log("wer");
-        if (blackscreen)
+        if(Completing == 0)
         {
-            Debug.Log("wer123");
-            Animations_ev0.SetInteger("screenState", 2);
-            
-        }
-        if (!blackscreen)
-        {
-            Debug.Log("wertyu7eikr11111");
-            NPCTalking = false;
-            DialogManager.Call_Cutscene_Dialog(Path);
-            if (DialogEnd)
+            if (script_for_Events.blackscreen)
             {
-                Animations_ev0.SetInteger("screenState", 1);
-                DialogEnd = false;
-                if (blackscreen)
+                Animations_ev0.SetInteger("ScreenState", 1);
+            }
+            else
+            {
+                Debug.Log("Вызывается диалог");
+                MIxed_dialog.Call_Cutscene_Dialog(Path);
+                if (script_for_Events.DialogEnd)
                 {
-                    foreach (GameObject f in objects_forDestroy_ev0)
-                    {
-                        Destroy(f);
-                    }
-                    EventEnd = true;
+                    Debug.Log("диалог закончился");
+                    Animations_ev0.SetInteger("ScreenState", 2);
+                    script_for_Events.DialogEnd = false;
+                    moving.CantMove = true;
+                    Completing++;
                 }
             }
-
-            if (EventEnd)
+        }
+        if (Completing == 1)
+        {
+            if (!script_for_Events.blackscreen)
+            {
+                Animations_ev0.SetInteger("ScreenState", 2);
+            }
+            else
+            {
+                Debug.Log("Уничтожаются объекты");
+                foreach (GameObject f in objects_forDestroy_ev0)
+                {
+                    Destroy(f);
+                }
+                Completing++;
+            }
+            
+            
+            
+            
+        }
+        if (Completing == 2)
+        {
+            if (script_for_Events.blackscreen)
+            {
+                Animations_ev0.SetInteger("ScreenState", 1);
+            }
+            else
             {
                 Debug.Log("Event выполнен");
-                EventEnd = false;
-                NPCTalking = true;
+                moving.CantMove = false;
+                Player.GetComponent<Animator>().enabled = false;
+                MissionGoing = false;
+                gameObject.GetComponent<Event0>().enabled = false;
             }
-        }
 
+        }
     }
 }

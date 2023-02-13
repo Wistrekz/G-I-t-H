@@ -21,7 +21,6 @@ public class Inventory_script : MonoBehaviour
     [System.Obsolete]
     private void Update()
     {
-        Debug.Log(Inventory_open);
         if(Input.GetButtonDown("Fire3") || Input.GetButton("Fire4"))
         {
             if(!script_for_Events.Cutscenegoing)
@@ -32,7 +31,7 @@ public class Inventory_script : MonoBehaviour
             Inventory_Panel.SetActive(true);
             Inventory_sprites.SetActive(true);
             Inventory_Pick.SetActive(true);
-            Mover.StopMoving();
+            moving.CantMove = true;
             if (Inventory_storage.Player_inventory != null)
             {
                 for (int i = 0; i < Inventory_storage.Player_inventory.Count; i++)
@@ -52,7 +51,10 @@ public class Inventory_script : MonoBehaviour
             }
             Inventory_sprites.SetActive(false);
             Info_Panel.SetActive(false);
-            Mover.StartMoving();
+            if(!Event0.Cutscenegoing)
+            {
+                moving.CantMove = false;
+            }
             Inventory_Pick.transform.position = new Vector2(Inventory_Panel.transform.position.x - 148, Inventory_Panel.transform.position.y);
             numberOfInventory = 0;
         }

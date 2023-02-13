@@ -56,7 +56,7 @@ public class DialogStart : MonoBehaviour
             if ((Input.GetButtonDown("Fire1") && IsIntrigger) || (Input.GetButtonDown("Fire2") && IsIntrigger))
             {
                 Debug.Log("ddddddd");
-                IsMove.StopMoving();
+                moving.CantMove = false;
                 dm.StartDialog();
                 IsIntrigger = false;
             }

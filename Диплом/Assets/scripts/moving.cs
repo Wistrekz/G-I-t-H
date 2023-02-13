@@ -15,6 +15,8 @@ public class moving : MonoBehaviour
     public float timing_frames;
     private int status = 0;
 
+    public static bool CantMove;
+
     private float counter = 1;
     private bool plus_minus = true;
     private float counter2 = 1;
@@ -28,7 +30,7 @@ public class moving : MonoBehaviour
     private float y_coordiate;
 
 
-    public void Start()
+    private void Awake()
     {
         speed1 = speed;
         rb = GetComponent<Rigidbody2D>();
@@ -38,15 +40,17 @@ public class moving : MonoBehaviour
 
     public void Update()
     {
-        Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        moveVelocity = moveInput.normalized * speed;
-
+        Vector2 moveInput = new Vector2(transform.position.x, transform.position.y);
+        if (!CantMove)
+        {
+            moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            moveVelocity = moveInput.normalized * speed;
+        }
     }
 
     public void FixedUpdate()
     {
         rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
-
 
         if (gameObject.transform.position.y < y_coordiate)
         {
@@ -149,14 +153,5 @@ public class moving : MonoBehaviour
         }
         x_coordiate = gameObject.transform.position.x;
         y_coordiate = gameObject.transform.position.y;
-    }
-
-    public void StopMoving()
-    {
-        speed = 0;
-    }
-    public void StartMoving()
-    {
-        speed = speed1;
     }
 }

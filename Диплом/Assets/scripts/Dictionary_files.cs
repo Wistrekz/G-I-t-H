@@ -84,8 +84,7 @@ public class Dictionary_files : MonoBehaviour
         XmlNodeList wordList = xmlDoc.GetElementsByTagName("replic");
         foreach (XmlNode item in wordList)
         {
-            Debug.Log(item.Value);
-            if(item.Value == replic)
+            if(item.InnerText == replic)
             {
                 replic_name = item.Attributes["name"].Value;
             }

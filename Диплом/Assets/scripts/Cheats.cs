@@ -19,10 +19,9 @@ public class Cheats : MonoBehaviour
         {
             ConsoleActivate = !ConsoleActivate;
         }
-        Debug.Log(ConsoleActivate);
         if(ConsoleActivate)
         {
-            Inventory_Add("����");
+            Inventory_Add("Ключ");
             Debug.Log("bruh");
             ConsoleActivate = false;
         }
@@ -39,8 +38,6 @@ public class Cheats : MonoBehaviour
             if (Inventory_storage._Inventory_Storage[i].name == Item)
             {
                 Inventory_storage.Player_inventory.Add(Inventory_storage._Inventory_Storage[i]);
-                Debug.Log(Inventory_storage._Inventory_Storage[i].name);
-                Debug.Log(Inventory_storage._Inventory_Storage[i].Item_Sprite);
             }
         }
         

@@ -9,20 +9,32 @@ public class Appearance : MonoBehaviour
 
     public void SetValue(int value)
     {
-        if(Anim.GetInteger("screenState") == 1)
+        if(value == 2)
         {
-            Event0.blackscreen = true;
+            Debug.Log("sdff");
+            script_for_Events.blackscreen = true;
+            return;
         }
-        if(Anim.GetInteger("screenState") == 2)
+        if(value == 1)
         {
-            Event0.blackscreen = false;
+            Debug.Log("sdff1");
+            script_for_Events.blackscreen = false;
+            return;
         }
-        Anim.SetInteger("screenState", value);
 
     }
 
-    public void SetStatus(bool Status_blackScreen)
+    public void SetStatus(int Value)
     {
-        Event0.blackscreen = Status_blackScreen;
+        if(Value == 0)
+        {
+            script_for_Events.blackscreen = false;
+            Debug.Log("white");
+        }
+        if (Value == 1)
+        {
+            script_for_Events.blackscreen = true;
+        }
     }
+
 }

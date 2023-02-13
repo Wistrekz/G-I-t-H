@@ -10,17 +10,6 @@ public class script_for_Events : MonoBehaviour
     [Header("general_sets")]
     public int MissionNumber;
     [Space]
-    [Header("0_Event")]
-    public Animator Animations_ev0;
-    public GameObject[] objects_forDestroy_ev0;
-    public Image black_screen;
-    public float black_screen_step, black_screen_interval;
-    public string PathToAnim;
-    public string Path;
-    [Header("1_Event")]
-    public Animator Animations_ev1;
-    public bool jier;
-    public GameObject[] objects_scenes;
 
 
 
