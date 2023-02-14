@@ -1,0 +1,6 @@
+<?xml version="1.0"  encoding="utf-8"?>
+<start>
+  <replic name="Trigger1">Мама пошла не в эту сторону</replic>
+  <replic name="Trigger2">Деревня не в той стороне</replic>
+  <replic name="Trigger3">Этот дом не подходит по описанию</replic>
+</start>

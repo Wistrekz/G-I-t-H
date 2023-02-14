@@ -62,13 +62,16 @@ public class Room_traveler : MonoBehaviour
             {
                 if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
                 {
+                    Debug.Log("setyui11111");
                     BlackScreen.SetInteger("ScreenState", 2);
                     Teleport_activated = true;
                 }
             }
             else
             {
+                Debug.Log("setyui11111");
                 BlackScreen.SetInteger("ScreenState", 2);
+                Debug.Log(BlackScreen.GetInteger("ScreenState"));
                 Teleport_activated = true;
             }
         }
@@ -78,18 +81,19 @@ public class Room_traveler : MonoBehaviour
             {
                 if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
                 {
+                    Debug.Log("setyui11111");
                     BlackScreen.SetInteger("ScreenState", 2);
                     Teleport_activated = true;
                 }
             }
             else
             {
+                Debug.Log("setyui11111");
                 BlackScreen.SetInteger("ScreenState", 2);
                 Teleport_activated = true;
             }
         }
 
-        Debug.Log(script_for_Events.blackscreen);
 
         if(Teleport_activated)
         {
@@ -100,23 +104,27 @@ public class Room_traveler : MonoBehaviour
 
     public void TeleportInBlack()
     {
+        Debug.Log(script_for_Events.blackscreen && OnTheStreets);
         if(script_for_Events.blackscreen && OnTheStreets)
         {
-            BlackScreen.SetInteger("ScreenState", 1);
             TravelToLocation = true;
             Player.transform.position = Teleport_subject.transform.position;
             To_Teleport_Distance_Inside();
             script_for_Events.blackscreen = false;
             Teleport_activated = false;
+            Debug.Log("setyuiwe5r423");
+            BlackScreen.SetInteger("ScreenState", 1);
+            Debug.Log("setyui");
         }
         if(script_for_Events.blackscreen && !OnTheStreets)
         {
-            BlackScreen.SetInteger("ScreenState", 1);
             IGotoRoom = true;
             Player.transform.position = Teleport_subject.transform.position;
             To_Teleport_Distance_Inside();
             script_for_Events.blackscreen = false;
+            BlackScreen.SetInteger("ScreenState", 1);
             Teleport_activated = false;
+            Debug.Log("setyui2526");
         }
     }
 
@@ -143,6 +151,7 @@ public class Room_traveler : MonoBehaviour
         if (collision.gameObject.name == "Hans")
         {
             intrigger = true;
+            BlackScreen.speed *= 2;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -150,6 +159,7 @@ public class Room_traveler : MonoBehaviour
         if (collision.gameObject.name == "Hans")
         {
             intrigger = false;
+            BlackScreen.speed /= 2;
         }
     }
     private void OnTriggerStay2D(Collider2D collision)

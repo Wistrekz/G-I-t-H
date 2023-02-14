@@ -4,6 +4,7 @@ using System.IO;
 using System.Xml.Serialization;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 [XmlRoot("start")]
 public class Dictionary_files : MonoBehaviour
@@ -12,6 +13,8 @@ public class Dictionary_files : MonoBehaviour
     private static string[] Replics_mas1;
 
     private static string[] marks;
+    private static bool MessageShowing = true;
+    private static string WordsReplic;
 
     public bool UseDefaultSets, UseNotDefaultSets;
 
@@ -39,6 +42,40 @@ public class Dictionary_files : MonoBehaviour
         xmlDoc.Load(langFilepath);
         XmlNodeList wordList = xmlDoc.GetElementsByTagName("replic");
         if(withName)
+        {
+            foreach (XmlNode item in wordList)
+            {
+                Replics.Add(item.Attributes["name"].Value + item.InnerText);
+                Debug.Log(item.Attributes["name"].Value);
+            }
+        }
+        else
+        {
+            foreach (XmlNode item in wordList)
+            {
+                Replics.Add(item.InnerText);
+            }
+        }
+        Replics_mas1 = new string[Replics.Count];
+        Replics_mas1 = Replics.ToArray();
+        Replics.Clear();
+        return Replics_mas1;
+    }
+
+    public enum DictionaryModes
+    {
+        None = 0,
+        OneReplicMode = 1,
+        CutsceneMode = 2,
+        MonologMode = 3
+    }
+
+    public static string[] GetLangDictionary(string langFilepath, DictionaryModes modes)
+    {
+        XmlDocument xmlDoc = new XmlDocument();
+        xmlDoc.Load(langFilepath);
+        XmlNodeList wordList = xmlDoc.GetElementsByTagName("replic");
+        if (modes == DictionaryModes.OneReplicMode)
         {
             foreach (XmlNode item in wordList)
             {
@@ -119,6 +156,20 @@ public class Dictionary_files : MonoBehaviour
         }
         return path;
     }
+
+    public static void ShowMessage(GameObject PlaceForThoughts, string Message)
+    {
+        if(MessageShowing)
+        {
+            PlaceForThoughts.SetActive(true);
+            PlaceForThoughts.GetComponentInChildren<Text>().text = Message;
+        }
+        if(!MessageShowing)
+        {
+            PlaceForThoughts.SetActive(false);
+        }
+    }
+
     public static void Default_lang_settings()
     {
         settings_methods.Language_mark_for_all = "ru";

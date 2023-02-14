@@ -14,6 +14,7 @@ public class script_for_Events : MonoBehaviour
 
 
     public static bool MissionGoing = true;
+    public static string Triggername;
     public static bool Cutscenegoing;
     public static bool Special_watcher;
     public static bool blackscreen = true;
@@ -39,5 +40,14 @@ public class script_for_Events : MonoBehaviour
     {
         bool IsHehave = false;
         return IsHehave;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.gameObject.name == "Hans")
+        {
+            Special_watcher = true;
+            Triggername = gameObject.name;
+        }
     }
 }
