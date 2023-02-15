@@ -27,7 +27,8 @@ public class Event0 : MonoBehaviour
 
     public void EvenT0()
     {
-        if(Completing == 0)
+        //Эвент - Катсцена с уездом отца
+        if (Completing == 0)
         {
             if (script_for_Events.blackscreen)
             {
