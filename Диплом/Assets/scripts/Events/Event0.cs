@@ -17,7 +17,7 @@ public class Event0 : MonoBehaviour
     public static bool DialogEnd, DialogStart = true;
     public static string SearchingItem, PathToanim;
 
-    private int Completing;
+    private int Completing = 0;
 
 
     private void Update()
@@ -80,6 +80,7 @@ public class Event0 : MonoBehaviour
                 moving.CantMove = false;
                 Player.GetComponent<Animator>().enabled = false;
                 MissionGoing = false;
+                gameObject.GetComponent<Event1>().enabled = true;
                 gameObject.GetComponent<Event0>().enabled = false;
             }
 

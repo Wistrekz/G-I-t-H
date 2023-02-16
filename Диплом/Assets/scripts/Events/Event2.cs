@@ -11,7 +11,7 @@ public class Event2 : MonoBehaviour
     public Animator BlackScreen;
     public GameObject[] objects_forDestroy, BordersTriggers;
     public string PathToThoughts;
-    public string[] PathToDialogs;
+    public string PathToDialog;
 
 
     public static bool MissionGoing;
@@ -36,7 +36,7 @@ public class Event2 : MonoBehaviour
         }
         if (Completing == 1)
         {
-            MIxed_dialog.Call_Cutscene_Dialog(PathToDialogs[0]);
+            MIxed_dialog.Call_Cutscene_Dialog(PathToDialog);
             if (script_for_Events.DialogEnd)
             {
                 Completing++;
@@ -55,6 +55,7 @@ public class Event2 : MonoBehaviour
                 foreach (GameObject f in objects_forDestroy)
                 {
                     Destroy(f);
+                    //уничтожаются со звуком захода за дверь
                 }
                 Completing++;
             }
@@ -63,6 +64,7 @@ public class Event2 : MonoBehaviour
         {
             script_for_Events.MissionGoing = false;
             TriggerForBed.SetActive(false);
+            gameObject.GetComponent<Event3>().enabled = true;
             gameObject.GetComponent<Event2>().enabled = false;
         }
     }

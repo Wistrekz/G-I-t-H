@@ -50,4 +50,18 @@ public class script_for_Events : MonoBehaviour
             Triggername = gameObject.name;
         }
     }
+
+    public static bool IsInTriiger(GameObject Trigger, GameObject Object)
+    {
+        bool Result = false;
+        Debug.Log("111111");
+        Debug.Log(Trigger.GetComponent<Collider2D>().bounds.center);
+        Debug.Log(Trigger.GetComponent<Collider2D>().Distance(Object.GetComponent<Collider2D>()).normal.y);
+        if (Trigger.GetComponent<Collider2D>().Distance(Object.GetComponent<Collider2D>()).normal.x < 0 && Trigger.GetComponent<Collider2D>().Distance(Object.GetComponent<Collider2D>()).normal.y < 0)
+        {
+            Debug.Log("2344573457");
+            Result = true;
+        }
+        return Result;
+    }
 }

@@ -1,6 +1,9 @@
 <?xml version="1.0"  encoding="utf-8"?>
 <start>
-  <replic name="Отец">847ц5</replic>
-  <replic name="Ганс">е7</replic>
-  <replic name="Отец">847ц5</replic>
+  <replic name="Папа">Сынок, пока ты здесь я хочу тебе сказать, чтобы ты не боялся на новом месте. Я дам тебе медаль которую получил на войне. Держи</replic>
+  <replic name="Ганс">Спасибо Папа</replic>
+  <replic name="Папа">А также хочу чтобы ты позаботился о наших девочках пока меня не будет. Через три дня я вернусь</replic>
+  <replic name="Извозщик">Нам пора отъезжать</replic>
+  <replic name="Папа">Всё. Пока сынок.</replic>
+  <replic name="Ганс">Всё. Пока папа.</replic>
 </start>

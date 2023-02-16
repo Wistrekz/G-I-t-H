@@ -154,4 +154,12 @@ public class moving : MonoBehaviour
         x_coordiate = gameObject.transform.position.x;
         y_coordiate = gameObject.transform.position.y;
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.gameObject.name == "")
+        {
+
+        }
+    }
 }

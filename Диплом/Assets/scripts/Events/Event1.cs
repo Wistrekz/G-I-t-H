@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Event1 : MonoBehaviour
 {
+    public GameObject Player;
     public GameObject TriggerForStart;
     public GameObject TrrigerForDialog;
     public GameObject TrrigerForDialog2;
@@ -19,7 +20,7 @@ public class Event1 : MonoBehaviour
     public static bool Special_watcher;
     public static bool DialogEnd, DialogStart = true;
 
-    private int Completing;
+    private int Completing = -1;
     private int count;
 
     private void Awake()
@@ -30,6 +31,7 @@ public class Event1 : MonoBehaviour
     private void Update()
     {
         //Эвент - Говор вокруг дома и внутри
+
         if(MissionGoing)
         {
             EvenT1();
@@ -50,7 +52,13 @@ public class Event1 : MonoBehaviour
 
     public void EvenT1()
     {
-        if(Completing == 0)
+        
+        if (TriggerForStart != null && script_for_Events.Triggername == TriggerForStart.name)
+        {
+            Completing++;
+            Destroy(TriggerForStart);
+        }
+        if (Completing == 0)
         {
             Debug.Log("Найти дом");
             //targetmenu.ShowMission();
@@ -87,12 +95,17 @@ public class Event1 : MonoBehaviour
         }
         if(Completing == 3)
         {
-            foreach(GameObject o in BordersTriggers)
+            if(script_for_Events.blackscreen)
             {
-                o.SetActive(false);
+                foreach (GameObject o in BordersTriggers)
+                {
+                    o.SetActive(false);
+                }
+                script_for_Events.MissionGoing = false;
+                gameObject.GetComponent<Event2>().enabled = true;
+                gameObject.GetComponent<Event1>().enabled = false;
             }
-            script_for_Events.MissionGoing = false;
-            gameObject.GetComponent<Event1>().enabled = false;
+            
         }
     }
 }
