@@ -28,7 +28,7 @@ public class Room_traveler : MonoBehaviour
     public bool OnTheStreets;
 
     private bool intrigger;
-    private bool Teleport_activated;
+    private bool Teleport_activated, Anim_start;
 
     private void To_Teleport_Distance_Inside()
     {
@@ -56,7 +56,7 @@ public class Room_traveler : MonoBehaviour
 
     private void Teleportation()
     {
-        if(OnTheStreets)
+        if(OnTheStreets && !Anim_start)
         {
             if (Isdoor)
             {
@@ -64,15 +64,19 @@ public class Room_traveler : MonoBehaviour
                 {
                     Debug.Log("setyui11111");
                     BlackScreen.SetInteger("ScreenState", 2);
+                    BlackScreen.SetBool("AnimEnd", true);
                     Teleport_activated = true;
+                    Anim_start = true;
                 }
             }
             else
             {
                 Debug.Log("setyui11111");
                 BlackScreen.SetInteger("ScreenState", 2);
+                BlackScreen.SetBool("AnimEnd", true);
                 Debug.Log(BlackScreen.GetInteger("ScreenState"));
                 Teleport_activated = true;
+                Anim_start = true;
             }
         }
         else
@@ -83,21 +87,19 @@ public class Room_traveler : MonoBehaviour
                 {
                     Debug.Log("setyui11111");
                     BlackScreen.SetInteger("ScreenState", 2);
+                    BlackScreen.SetBool("AnimEnd", true);
                     Teleport_activated = true;
+                    Anim_start = true;
                 }
             }
             else
             {
                 Debug.Log("setyui11111");
                 BlackScreen.SetInteger("ScreenState", 2);
+                BlackScreen.SetBool("AnimEnd", true);
                 Teleport_activated = true;
+                Anim_start = true;
             }
-        }
-
-
-        if(Teleport_activated)
-        {
-            TeleportInBlack();
         }
 
     }
@@ -112,9 +114,9 @@ public class Room_traveler : MonoBehaviour
             To_Teleport_Distance_Inside();
             script_for_Events.blackscreen = false;
             Teleport_activated = false;
-            Debug.Log("setyuiwe5r423");
             BlackScreen.SetInteger("ScreenState", 1);
-            Debug.Log("setyui");
+            BlackScreen.SetBool("AnimEnd", false);
+            Anim_start = false;
         }
         if(script_for_Events.blackscreen && !OnTheStreets)
         {
@@ -123,8 +125,9 @@ public class Room_traveler : MonoBehaviour
             To_Teleport_Distance_Inside();
             script_for_Events.blackscreen = false;
             BlackScreen.SetInteger("ScreenState", 1);
+            BlackScreen.SetBool("AnimEnd", false);
             Teleport_activated = false;
-            Debug.Log("setyui2526");
+            Anim_start = false;
         }
     }
 
@@ -138,12 +141,16 @@ public class Room_traveler : MonoBehaviour
 
     public void Update()
     {
-        if (intrigger)
+        Debug.Log(BlackScreen.GetInteger("ScreenState"));
+        if (intrigger && !Teleport_activated)
         {
             Debug.Log("sdfgg");
             Teleportation();
         }
-
+        if(Teleport_activated)
+        {
+            TeleportInBlack();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

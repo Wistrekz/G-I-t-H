@@ -11,14 +11,14 @@ public class Appearance : MonoBehaviour
     {
         if(value == 2)
         {
-            Debug.Log("sdff");
             script_for_Events.blackscreen = true;
+            Anim.SetInteger("ScreenState", 0);
             return;
         }
         if(value == 1)
         {
-            Debug.Log("sdff1");
             script_for_Events.blackscreen = false;
+            Anim.SetInteger("ScreenState", 0);
             return;
         }
 

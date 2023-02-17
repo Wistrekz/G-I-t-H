@@ -14,7 +14,6 @@ public class Dictionary_files : MonoBehaviour
 
     private static string[] marks;
     private static bool MessageShowing = true;
-    private static string WordsReplic;
 
     public bool UseDefaultSets, UseNotDefaultSets;
 
@@ -159,17 +158,18 @@ public class Dictionary_files : MonoBehaviour
 
     public static void ShowMessage(GameObject PlaceForThoughts, string Message)
     {
-        if(MessageShowing)
-        {
             PlaceForThoughts.SetActive(true);
             PlaceForThoughts.GetComponentInChildren<Text>().text = Message;
-        }
-        if(!MessageShowing)
-        {
-            PlaceForThoughts.SetActive(false);
-        }
+    }
+    public static void HideMessage(GameObject PlaceForThoughts)
+    {
+        PlaceForThoughts.SetActive(false);
     }
 
+    public static void ShowMessageActivated()
+    {
+
+    }
     public static void Default_lang_settings()
     {
         settings_methods.Language_mark_for_all = "ru";

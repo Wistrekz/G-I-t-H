@@ -46,6 +46,12 @@ public class moving : MonoBehaviour
             moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             moveVelocity = moveInput.normalized * speed;
         }
+        else
+        {
+            speed = 0;
+            moveVelocity = new Vector2();
+        }
+        Debug.Log(CantMove);
     }
 
     public void FixedUpdate()
@@ -155,11 +161,4 @@ public class moving : MonoBehaviour
         y_coordiate = gameObject.transform.position.y;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if(collision.gameObject.name == "")
-        {
-
-        }
-    }
 }

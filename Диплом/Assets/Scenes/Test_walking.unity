@@ -1752,7 +1752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922947bb5955725488089c90fe1c900f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BlackScreen: {fileID: 0}
+  BlackScreen: {fileID: 431382018}
   Player: {fileID: 424894505}
   Location_sprite: {fileID: 0}
   dir: 2
@@ -5827,7 +5827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922947bb5955725488089c90fe1c900f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BlackScreen: {fileID: 0}
+  BlackScreen: {fileID: 431382018}
   Player: {fileID: 424894505}
   Location_sprite: {fileID: 0}
   dir: 2
@@ -5957,7 +5957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922947bb5955725488089c90fe1c900f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BlackScreen: {fileID: 0}
+  BlackScreen: {fileID: 431382018}
   Player: {fileID: 424894505}
   Location_sprite: {fileID: 0}
   dir: 2
@@ -6185,7 +6185,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 301968854}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.1498, y: -7.31, z: 137.94005}
+  m_LocalPosition: {x: 4.13, y: -3.88, z: 137.94005}
   m_LocalScale: {x: 3.929391, y: 0.40711388, z: 1}
   m_Children: []
   m_Father: {fileID: 1933720698}
@@ -6796,8 +6796,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342900878}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 40.83, y: 151.98, z: 137.94005}
-  m_LocalScale: {x: 2.3882751, y: 0.49354413, z: 1}
+  m_LocalPosition: {x: 40.9, y: 152.2, z: 137.94005}
+  m_LocalScale: {x: 3.770584, y: 0.49354413, z: 1}
   m_Children: []
   m_Father: {fileID: 1042334318}
   m_RootOrder: 0
@@ -7245,7 +7245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922947bb5955725488089c90fe1c900f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BlackScreen: {fileID: 0}
+  BlackScreen: {fileID: 431382018}
   Player: {fileID: 424894505}
   Location_sprite: {fileID: 0}
   dir: 2
@@ -9587,7 +9587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922947bb5955725488089c90fe1c900f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BlackScreen: {fileID: 0}
+  BlackScreen: {fileID: 431382018}
   Player: {fileID: 424894505}
   Location_sprite: {fileID: 0}
   dir: 3
@@ -10175,7 +10175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922947bb5955725488089c90fe1c900f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BlackScreen: {fileID: 0}
+  BlackScreen: {fileID: 431382018}
   Player: {fileID: 424894505}
   Location_sprite: {fileID: 0}
   dir: 3
@@ -11812,7 +11812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922947bb5955725488089c90fe1c900f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BlackScreen: {fileID: 0}
+  BlackScreen: {fileID: 431382018}
   Player: {fileID: 424894505}
   Location_sprite: {fileID: 0}
   dir: 2
@@ -13064,15 +13064,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 424894505}
-  TriggerForStart: {fileID: 342900878}
+  TriggerForStart: {fileID: 301968854}
   TrrigerForDialog: {fileID: 494540520}
   TrrigerForDialog2: {fileID: 0}
   BordersTriggers: []
   BlackScreen: {fileID: 431382018}
   Thoughts: {fileID: 1169676103}
   objects_forDestroy: []
-  PathToThoughts: 
-  PathToDialog1: 
+  PathToThoughts: Assets/Languages_/ru/Day1/ru_Day1Thoughts.xml
+  PathToDialog1: Assets/Languages_/ru/Day1/ru_Event1Thoughts 1.xml
   PathToDialog2: 
 --- !u!1 &819888403
 GameObject:
@@ -13467,7 +13467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922947bb5955725488089c90fe1c900f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BlackScreen: {fileID: 0}
+  BlackScreen: {fileID: 431382018}
   Player: {fileID: 424894505}
   Location_sprite: {fileID: 0}
   dir: 2
@@ -13946,7 +13946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922947bb5955725488089c90fe1c900f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BlackScreen: {fileID: 0}
+  BlackScreen: {fileID: 431382018}
   Player: {fileID: 424894505}
   Location_sprite: {fileID: 0}
   dir: 1
@@ -15452,7 +15452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922947bb5955725488089c90fe1c900f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BlackScreen: {fileID: 0}
+  BlackScreen: {fileID: 431382018}
   Player: {fileID: 424894505}
   Location_sprite: {fileID: 0}
   dir: 0
@@ -22374,7 +22374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922947bb5955725488089c90fe1c900f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BlackScreen: {fileID: 0}
+  BlackScreen: {fileID: 431382018}
   Player: {fileID: 424894505}
   Location_sprite: {fileID: 0}
   dir: 3
@@ -23794,7 +23794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922947bb5955725488089c90fe1c900f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BlackScreen: {fileID: 0}
+  BlackScreen: {fileID: 431382018}
   Player: {fileID: 424894505}
   Location_sprite: {fileID: 0}
   dir: 3
@@ -26416,7 +26416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922947bb5955725488089c90fe1c900f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BlackScreen: {fileID: 0}
+  BlackScreen: {fileID: 431382018}
   Player: {fileID: 424894505}
   Location_sprite: {fileID: 0}
   dir: 3

@@ -12,7 +12,7 @@ public class Event1 : MonoBehaviour
     public GameObject[] BordersTriggers;
     public Animator BlackScreen;
     public GameObject Thoughts;
-    public GameObject[] objects_forDestroy;
+    public GameObject[] objects_forDestroy; 
     public string PathToThoughts, PathToDialog1, PathToDialog2;
 
     public static bool MissionGoing = true;
@@ -22,6 +22,9 @@ public class Event1 : MonoBehaviour
 
     private int Completing = -1;
     private int count;
+    private int thoughtsReplics;
+    private string[] Messages;
+    private bool ThoughtShowen = true;
 
     private void Awake()
     {
@@ -57,15 +60,33 @@ public class Event1 : MonoBehaviour
         {
             Completing++;
             Destroy(TriggerForStart);
+            OnStart = true;
+
         }
         if (Completing == 0)
         {
-            Debug.Log("Найти дом");
             //targetmenu.ShowMission();
-            if (OnStart)
+            if (OnStart && !script_for_Events.blackscreen)
             {
-                Dictionary_files.ShowMessage(Thoughts, Dictionary_files.GetLangDictionary(PathToThoughts, $"TriggerStart")[0]);
-                Completing++;
+                Messages = Dictionary_files.GetLangDictionary(PathToThoughts, $"Event1Gates");
+                if(ThoughtShowen)
+                {
+                    Dictionary_files.ShowMessage(Thoughts, Dictionary_files.GetLangDictionary(PathToThoughts, $"Event1Gates")[count]);
+                    if(Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
+                    {
+                        count++;
+                    }
+                    moving.CantMove = true;
+                }
+                if(count == Messages.Length)
+                {
+                    Dictionary_files.HideMessage(Thoughts);
+                    OnStart = false;
+                    moving.CantMove = false;
+                    ThoughtShowen = false;
+                    Completing++;
+                }
+                
             }
         }
         if(Completing == 1)
