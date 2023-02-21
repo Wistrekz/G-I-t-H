@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Event2 : MonoBehaviour
 {
-    //Эвент - разговор с сестрой в комнате сохранения
+    //Эвент - разговор внутри
     public GameObject TriggerForStart;
     public GameObject TriggerForBed;
     public GameObject PlaceforThoughts;
