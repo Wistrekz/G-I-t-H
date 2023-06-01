@@ -12,18 +12,22 @@ public class Dialog_cutscene : MonoBehaviour
     public Text dialogtext;
     public GameObject panel;
     public Text nametext;
-    public string path, path_artists_info;
+    public string path;
 
     public Animator animator;
 
     private string[] replics;
     private int rep_num;
+    private string path_artists_info;
     private string[] replic_name;
 
     private UnityEngine.Color char_color;
 
 
-
+    private void Start()
+    {
+        path_artists_info = Application.streamingAssetsPath + "/Languages_l_marks.txt";
+    }
 
     public void Update()
     {
@@ -51,7 +55,7 @@ public class Dialog_cutscene : MonoBehaviour
         else
         {
             replic_name = replics[rep_num].Split(new string[1] { Artists_marks.Namemark_Symbol }, StringSplitOptions.None);
-            ColorUtility.TryParseHtmlString(Dictionary_files.GetLangDictionary_FromNameToColor(path_artists_info, replic_name[0]), out char_color);
+            //ColorUtility.TryParseHtmlString(Dictionary_files.GetLangDictionary_FromNameToColor(path_artists_info, replic_name[0]), out char_color);
             nametext.text = replic_name[0];
             nametext.color = char_color;
             dialogtext.text = replic_name[1];
@@ -137,4 +141,9 @@ public class Dialog_cutscene : MonoBehaviour
         inTrigger = false;
     }
     */
+
+    public void NextScene(int scene_num)
+    {
+        SceneManager.LoadScene(scene_num);
+    }
 }

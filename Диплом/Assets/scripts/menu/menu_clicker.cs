@@ -11,6 +11,7 @@ public class menu_clicker : MonoBehaviour
 
 	public GameObject block;
 	public GameObject Set_block;
+	public static bool FullscreenStatus;
 
     public void MouseOn()
 	{
@@ -24,7 +25,20 @@ public class menu_clicker : MonoBehaviour
 		text.color = Color.white;
 	}
 
-    public void TotheScene(int scene)
+	public void MouseOnButton(GameObject button)
+	{
+		Debug.Log(gameObject.name);
+		button.GetComponent<Image>().color = Color.yellow;
+	}
+
+	public void MouseOutButton(GameObject button)
+	{
+		Debug.Log("111");
+		button.GetComponent<Image>().color = Color.white;
+	}
+
+
+	public void TotheScene(int scene)
     {
 		SceneManager.LoadScene(scene);
 	}
@@ -42,4 +56,16 @@ public class menu_clicker : MonoBehaviour
 		block.SetActive(true);
 		Set_block.SetActive(false);
 	}
+
+	public void FullscreenMode()
+    {
+		if(FullscreenStatus)
+        {
+
+        }
+		else
+        {
+
+        }
+    }
 }

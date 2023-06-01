@@ -1,0 +1,7 @@
+<?xml version="1.0"  encoding="utf-8"?>
+<start>
+	<replic name="AgataFail">Ищи блять</replic>
+	<replic name="PolFail">ты олух</replic>
+	<replic name="PolSuccess">ты не олух</replic>
+	<replic name="AgataSuccess">Найс</replic>
+</start>

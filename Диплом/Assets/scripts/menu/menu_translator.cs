@@ -11,13 +11,24 @@ public class menu_translator : MonoBehaviour
     public Text[] menu_texts;
 
 
+
+
     public void text_translate()
     {
         path = Dictionary_files.Mark_Reader(path);
-        Debug.Log("ßçûê" + path);
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½" + path);
         foreach(Text u in menu_texts)
         {
-            u.text = Dictionary_files.GetLangDictionary(path, u.name)[0];
+            if(u != null)
+                Debug.Log(u.name);
+        }
+        foreach (Text u in menu_texts)
+        {
+            if (u != null)
+            {
+                u.text = Dictionary_files.GetLangDictionary(path, u.name)[0];
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½" + u.text);
+            }
         }
     }
 }

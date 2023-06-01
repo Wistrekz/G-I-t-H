@@ -11,4 +11,16 @@ public class StoryMoving : MonoBehaviour
             script_for_Events.Triggername = collision.gameObject.name;
         }
     }
+
+    public static void ShowPicture(GameObject Picture, string spriteName, float opacity)
+    {
+        if(Picture.GetComponent<SpriteRenderer>().sprite.name == spriteName)
+        {
+            Debug.LogError("Меняющийся спрайт тот же самый");
+        }
+        else
+        {
+
+        }
+    }
 }

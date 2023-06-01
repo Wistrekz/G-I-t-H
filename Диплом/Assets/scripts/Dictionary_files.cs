@@ -11,23 +11,30 @@ public class Dictionary_files : MonoBehaviour
 {
     private static readonly List<string> Replics = new List<string>();
     private static string[] Replics_mas1;
+    public static GameObject ThoughtsPanel;
 
     private static string[] marks;
-    private static bool MessageShowing = true;
 
     public bool UseDefaultSets, UseNotDefaultSets;
 
-    public static string[] GetLangDictionary(string langFilepath, string obj_name)
+    public static string[] GetLangDictionary(string langFilepath, string obj_name) //Этот метод позволяет взять массив реплик из файла XML опираясь на атрибут-"имя"
     {
         XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.Load(langFilepath);
+        langFilepath = langFilepath.Replace("Assets/", "").Replace("Resources/", "");
+        langFilepath = langFilepath.Remove(langFilepath.Length - 4);
+        Debug.Log(langFilepath);
+        langFilepath = Mark_Reader(langFilepath);
+        TextAsset textAsset = (TextAsset)Resources.Load(langFilepath);
+        Debug.Log(langFilepath);
+        Debug.Log(textAsset.text);
+        xmlDoc.LoadXml(textAsset.text);
         XmlNodeList wordList = xmlDoc.GetElementsByTagName("replic");
 
         foreach (XmlNode item in wordList)
         {
             if (item.Attributes["name"].Value.Contains(obj_name) || item.Attributes["name"].Value == obj_name)
             {
-                Replics.Add(item.InnerText);
+                Replics.Add(item.InnerText);      
             }
         }
         Replics_mas1 = Replics.ToArray();
@@ -35,88 +42,53 @@ public class Dictionary_files : MonoBehaviour
         return Replics_mas1;
     }
 
-    public static string[] GetLangDictionary(string langFilepath, bool withName)
+    public static string[] GetLangDictionary(string langFilepath, bool withName) //Этот метод позволяет взять массив всех не смотря на имя, но он может включить имя в сам текст
     {
         XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.Load(langFilepath);
-        XmlNodeList wordList = xmlDoc.GetElementsByTagName("replic");
-        if(withName)
-        {
-            foreach (XmlNode item in wordList)
+        Debug.Log("werwer");
+        langFilepath = langFilepath.Replace("Assets/", "").Replace("Resources/", "");
+        Debug.Log(langFilepath);
+        langFilepath = langFilepath.Remove(langFilepath.Length - 4);
+        Debug.Log(langFilepath);
+        langFilepath = Mark_Reader(langFilepath);
+        TextAsset textAsset = (TextAsset)Resources.Load(langFilepath);
+        Debug.Log(textAsset.text);
+            xmlDoc.LoadXml(textAsset.text);
+            XmlNodeList wordList = xmlDoc.GetElementsByTagName("replic");
+            if (withName)
             {
-                Replics.Add(item.Attributes["name"].Value + item.InnerText);
-                Debug.Log(item.Attributes["name"].Value);
+                foreach (XmlNode item in wordList)
+                {
+                    Replics.Add(item.Attributes["name"].Value + item.InnerText); //отбор текстов по имени
+                    Debug.Log(item.Attributes["name"].Value);
+                }
             }
-        }
-        else
-        {
-            foreach (XmlNode item in wordList)
+            else
             {
-                Replics.Add(item.InnerText);
+                foreach (XmlNode item in wordList)
+                {
+                    Replics.Add(item.InnerText);
+                }
             }
-        }
-        Replics_mas1 = new string[Replics.Count];
-        Replics_mas1 = Replics.ToArray();
-        Replics.Clear();
-        return Replics_mas1;
+            Replics_mas1 = new string[Replics.Count];
+            Replics_mas1 = Replics.ToArray();
+            Replics.Clear();
+            return Replics_mas1;
+        
     }
 
-    public enum DictionaryModes
-    {
-        None = 0,
-        OneReplicMode = 1,
-        CutsceneMode = 2,
-        MonologMode = 3
-    }
 
-    public static string[] GetLangDictionary(string langFilepath, DictionaryModes modes)
-    {
-        XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.Load(langFilepath);
-        XmlNodeList wordList = xmlDoc.GetElementsByTagName("replic");
-        if (modes == DictionaryModes.OneReplicMode)
-        {
-            foreach (XmlNode item in wordList)
-            {
-                Replics.Add(item.Attributes["name"].Value + item.InnerText);
-                Debug.Log(item.Attributes["name"].Value);
-            }
-        }
-        else
-        {
-            foreach (XmlNode item in wordList)
-            {
-                Replics.Add(item.InnerText);
-            }
-        }
-        Replics_mas1 = new string[Replics.Count];
-        Replics_mas1 = Replics.ToArray();
-        Replics.Clear();
-        return Replics_mas1;
-    }
-    public static string GetLangDictionary_FromNameToColor(string Filepath, string Name)
-    {
-        StreamReader sr = new StreamReader(Filepath);
-        string Colors_and_names = sr.ReadToEnd();
-        sr.Close();
-        Debug.Log(Name);
-        string[] Colors_and_names_mas = Colors_and_names.Split(new string[2] { "-", Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-        for(int i = 0; i < Colors_and_names_mas.Length; i++)
-        {
-            if(Colors_and_names_mas[i] == Name)
-            {
-                return Colors_and_names_mas[i + 1];
-            }
-        }
-        Replics.Clear();
-        return Colors_and_names_mas[Colors_and_names_mas.Length - 1];
-    }
 
-    public static string GetLangDictionary_GetName(string Filepath, string replic)
+    public static string GetLangDictionary_GetName(string Filepath, string replic) //Этот метод позволяет взять имя из файла XML по его пути и реплике
     {
+        Filepath = Filepath.Replace("Assets/", "").Replace("Resources/", "");
+        Filepath = Filepath.Remove(Filepath.Length - 4);
+        Filepath = Mark_Reader(Filepath);
+        TextAsset textAsset = (TextAsset)Resources.Load(Filepath);       //Загрузка из файлов
+        Debug.Log(textAsset.text);
         string replic_name = null;
         XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.Load(Filepath);
+        xmlDoc.LoadXml(textAsset.text);
         XmlNodeList wordList = xmlDoc.GetElementsByTagName("replic");
         foreach (XmlNode item in wordList)
         {
@@ -128,7 +100,7 @@ public class Dictionary_files : MonoBehaviour
         return replic_name;
     }
 
-    public static string Mark_Reader(string path)
+    public static string Mark_Reader(string path) //Данный метод позволяет отрегулировать путь к файлам относительно выбранного пользователем языка
     {
         StreamReader sr = new StreamReader(settings_methods.path_of_SetIn_Langs_forAll);
         string Langs_and_marks = sr.ReadToEnd();
@@ -140,7 +112,7 @@ public class Dictionary_files : MonoBehaviour
         {
             if(r % 2 != 0)
             {
-                marks[i] = Langs_and_marks_mas[r];
+                marks[i] = Langs_and_marks_mas[r]; //подборка всех марок
                 i++;
             }
         }
@@ -149,43 +121,50 @@ public class Dictionary_files : MonoBehaviour
             if (path.Contains($"/{u}_"))
             {
                 path = path.Replace($"/{u}_", "/" + settings_methods.Language_mark_for_all + "_");
-                path = path.Replace($"/{u}/", "/" + settings_methods.Language_mark_for_all + "/");
+                path = path.Replace($"/{u}/", "/" + settings_methods.Language_mark_for_all + "/"); //замена пути на настоящий
                 break;
             }
         }
         return path;
     }
 
-    public static void ShowMessage(GameObject PlaceForThoughts, string Message)
+
+    public static void ShowMessage(string Message)
     {
-            PlaceForThoughts.SetActive(true);
-            PlaceForThoughts.GetComponentInChildren<Text>().text = Message;
+        /// <summary>
+        /// Pokazivaet soobschenie kotoroe nado ubirat
+        /// </summary>
+        ThoughtsPanel.SetActive(true);
+        ThoughtsPanel.GetComponentInChildren<Text>().text = Message;
+
     }
+
+
     public static void HideMessage(GameObject PlaceForThoughts)
     {
+        /// <summary>
+        /// Ubiraet pokazannoe soobschenie
+        /// </summary>
         PlaceForThoughts.SetActive(false);
+        script_for_Events.DialogEnd = true;
     }
 
-    public static void ShowMessageActivated()
-    {
-
-    }
     public static void Default_lang_settings()
     {
-        settings_methods.Language_mark_for_all = "ru";
-        settings_methods.path_of_SetIn_Langs_forAll = "Assets/Languages_/Settings/Languages_l_marks.txt";
+        settings_methods.Language_mark_for_all = "ru"; // русская марка
+        settings_methods.path_of_SetIn_Langs_forAll = Application.streamingAssetsPath + "/Languages_l_marks.txt"; //Указывает путь к маркам всех языков локализации в игре
 
     }
 
     public static void NotDefault_lang_settings()
     {
-        settings_methods.Language_mark_for_all = "en";
-        settings_methods.path_of_SetIn_Langs_forAll = "Assets/Languages_/Settings/Languages_l_marks.txt";
+        settings_methods.Language_mark_for_all = "en"; //английская марка
+        settings_methods.path_of_SetIn_Langs_forAll = Application.streamingAssetsPath + "/Languages_l_marks.txt"; //Указывает путь к маркам всех языков локализации в игре
 
     }
     private void Start()
     {
-        if(UseDefaultSets)
+        if (UseDefaultSets)
         {
             Non_static_Default_lang_settings();
         }

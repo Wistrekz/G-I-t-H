@@ -1,69 +1,102 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Event2 : MonoBehaviour
 {
-    //Эвент - разговор с сестрой в комнате сохранения
+    //Event2 - razgovor v dome s sestroi i vzyatie medalyona
     public GameObject TriggerForStart;
     public GameObject TriggerForBed;
+    public GameObject Medallion;
     public GameObject PlaceforThoughts;
     public Animator BlackScreen;
-    public GameObject[] objects_forDestroy, BordersTriggers;
-    public string PathToThoughts;
-    public string PathToDialog;
+    public GameObject[] objects_forDestroy;
 
+
+
+
+    public GameObject Sister;
+
+    public string PathToDialog, Staticpath, NameOfCatchMedal;
 
     public static bool MissionGoing;
 
     private int Completing;
-    private int count;
 
-    private void Update()
+    private bool FirstFrame;
+    private void Start()
     {
-        if (MissionGoing)
+        script_for_Events.Trigger_for_SpecWatcher = TriggerForStart;
+        script_for_Events.ScriptNumber = 2;
+
+        //РђРєС‚РёРІРёСЂСѓРµРј РІСЃРµ РЅСѓР¶РЅС‹ РѕР±СЉРµРєС‚С‹
+        foreach (GameObject i in objects_forDestroy)
         {
-            EvenT2();
+            i.SetActive(true);
         }
+    }
+
+    private void FixedUpdate()
+    {
+        EvenT2();
+        Debug.Log("Event2" + Completing);
     }
 
     public void EvenT2()
     {
-        if (Completing == 0)
+        if (Completing == 0 && !script_for_Events.blackscreen)
         {
-            Debug.Log("Найти дом");
-            //targetmenu.ShowMission();
+            Debug.Log("Awaiting");
+            //Р”РѕС…РѕРґРёРј РґРѕ СЃРїРµС†РёР°Р»СЊРЅРѕРіРѕ С‚СЂРёРіРіРµСЂР° Рё РіРѕРІРѕСЂРёРј СЃ СЃРµСЃС‚СЂРѕР№.
+        }
+        if (script_for_Events.Special_Watcher)
+        {
+            script_for_Events.Special_Watcher = false;
+            script_for_Events.DialogStart = true;
+            Destroy(TriggerForStart);
+            Completing++;
         }
         if (Completing == 1)
         {
-            MIxed_dialog.Call_Cutscene_Dialog(PathToDialog);
+            if(!script_for_Events.blackscreen)
+            {
+                if(!FirstFrame)
+                {
+
+                }
+                MIxed_dialog.Call_Cutscene_Dialog(PathToDialog); //Р•СЃР»Рё СЌРєСЂР°РЅ РЅРµ С‚С‘РјРЅС‹Р№ С‚Рѕ РЅР°С‡РёРЅР°РµС‚СЃСЏ РґРёР°Р»РѕРі
+            }
             if (script_for_Events.DialogEnd)
             {
+                script_for_Events.DialogStart = false;
+                script_for_Events.DialogEnd = false;
                 Completing++;
             }
 
         }
-        if (Completing == 2)
+        if(Completing == 2)
         {
-            if (!script_for_Events.blackscreen)
+            //MissionsShowing.UpdateMission(MissionsText); //РћР±РЅРѕРІР»РµРЅРёРµ РјРёСЃСЃРёРё
+            script_for_Events.Trigger_for_Enter_SpecWatcher = TriggerForBed;
+            Debug.Log(Inventory_storage.Player_inventory.Count);
+            if (Cheats.CheckInventoryOnThisItem("Medallion"))
             {
-                BlackScreen.SetInteger("ScreenState", 2);
-            }
-            else
-            {
-                Debug.Log("Уничтожаются объекты");
-                foreach (GameObject f in objects_forDestroy)
-                {
-                    Destroy(f);
-                    //уничтожаются со звуком захода за дверь
-                }
+                Destroy(Medallion);
+                Take_the_Item.WeTakeIt = false;
+                script_for_Events.Special_Enter_Watcher = false;
                 Completing++;
             }
         }
         if (Completing == 3)
         {
-            script_for_Events.MissionGoing = false;
-            TriggerForBed.SetActive(false);
+            Debug.Log("Event2 vipolnen");
+            foreach (GameObject i in objects_forDestroy)  //РЈРЅРёС‡С‚РѕР¶РµРЅРёРµ РѕР±СЉРµРєС‚РѕРІ
+            {
+                Destroy(i);
+            }
+            Debug.Log("РЈРЅРёС‡С‚РѕР¶Р°СЋС‚СЃСЏ РѕР±СЉРµРєС‚С‹");
+            script_for_Events.ScriptNumber = 3;
             gameObject.GetComponent<Event3>().enabled = true;
             gameObject.GetComponent<Event2>().enabled = false;
         }

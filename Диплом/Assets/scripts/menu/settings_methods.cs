@@ -11,7 +11,6 @@ public class settings_methods : MonoBehaviour
 
     public static string Language_mark_for_all;
     public static bool LangSetIn;
-    public string path_of_SetIn_Langs;
 
     public static string path_of_SetIn_Langs_forAll;
 
@@ -22,10 +21,8 @@ public class settings_methods : MonoBehaviour
 
     void Start()
     {
-        Dictionary_files.Default_lang_settings();
-        path_of_SetIn_Langs_forAll = path_of_SetIn_Langs;
-        Debug.Log(path_of_SetIn_Langs);
-        StreamReader sr = new StreamReader(path_of_SetIn_Langs);
+        Dictionary_files.Default_lang_settings(); //нужно будет потом удалить
+        StreamReader sr = new StreamReader(path_of_SetIn_Langs_forAll);
         string Langs_and_marks = sr.ReadToEnd();
         Debug.Log(Langs_and_marks);
         sr.Close();

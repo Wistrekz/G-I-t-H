@@ -13,6 +13,7 @@ public class Inventory_storage : MonoBehaviour
     [System.Serializable]
     public struct Inventory_Storage
     {
+        public GameObject Object;
         public string name;
         public Sprite Item_Sprite;
     }

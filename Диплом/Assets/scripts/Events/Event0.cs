@@ -5,45 +5,57 @@ using UnityEngine.UI;
 
 public class Event0 : MonoBehaviour
 {
-    public Animator Animations_ev0;
-    public GameObject[] objects_forDestroy_ev0;
+    public Animator Animations_ev0;        //Подготовка вещей
+    public GameObject[] objects_forDestroy_ev0; //Объекты для уничтожения
+    public GameObject SpriteForStart;
     public Image black_screen;
-    public string Path;
-    public GameObject Player;
+    public string Path;  //Путь для разговора 
+    public GameObject Player;    //Игрок
+
 
     public static bool MissionGoing = true;
     public static bool Cutscenegoing, AnimEnd;
     public static bool Special_watcher;
-    public static bool DialogEnd, DialogStart = true;
-    public static string SearchingItem, PathToanim;
 
-    private int Completing = 0;
+    private int Completing = 0; //Счётчик законченности события
 
+    private void Awake()
+    {
+        MissionsShowing.HidePanel();
+        script_for_Events.ScriptNumber = 0;
+        Room_traveler.SpriteForSizes = SpriteForStart;
+        
+    }
 
     private void Update()
     {
         EvenT0();
+        script_for_Events.Completing_static = Completing;
     }
 
     public void EvenT0()
     {
-        //Эвент - Катсцена с уездом отца
+        Debug.Log("Completing " + script_for_Events.Completing_static);
+        //Катсцена с уездом отца
         if (Completing == 0)
         {
             if (script_for_Events.blackscreen)
             {
-                Animations_ev0.SetInteger("ScreenState", 1);
+                script_for_Events.DialogStart = true;
+                Debug.Log("диалогСтарт " + script_for_Events.DialogStart);  
+                Animations_ev0.SetInteger("ScreenState", 1);            //Убирается чёрный экран
             }
             else
             {
                 Debug.Log("Вызывается диалог");
-                MIxed_dialog.Call_Cutscene_Dialog(Path);
+                MIxed_dialog.Call_Cutscene_Dialog(Path);  //Диалог начался
                 if (script_for_Events.DialogEnd)
                 {
-                    Debug.Log("диалог закончился");
+                    Debug.Log("диалог закончился");  //Диалог закончился
                     Animations_ev0.SetInteger("ScreenState", 2);
                     script_for_Events.DialogEnd = false;
-                    moving.CantMove = true;
+                    
+                    moving.CantMove = true;  //Игра запрещает двигаться
                     Completing++;
                 }
             }
@@ -52,35 +64,35 @@ public class Event0 : MonoBehaviour
         {
             if (!script_for_Events.blackscreen)
             {
-                Animations_ev0.SetInteger("ScreenState", 2);
+                Animations_ev0.SetInteger("ScreenState", 2);   //Экран становится чёрным
             }
             else
             {
                 Debug.Log("Уничтожаются объекты");
-                foreach (GameObject f in objects_forDestroy_ev0)
+                foreach (GameObject f in objects_forDestroy_ev0) //Уничтожаются объекты
                 {
                     Destroy(f);
                 }
                 Completing++;
             }
-            
-            
-            
-            
         }
         if (Completing == 2)
         {
             if (script_for_Events.blackscreen)
             {
-                Animations_ev0.SetInteger("ScreenState", 1);
+                Animations_ev0.SetInteger("ScreenState", 1); //Убирается чёрный экран
             }
             else
             {
-                Debug.Log("Event выполнен");
+                MissionsShowing.ShowPanel();
+                MissionsShowing.UpdateMission();
+                Debug.Log("Event0 выполнен");
                 moving.CantMove = false;
+                MissionGoing = false;                              //Обнуляются все переменные
+                script_for_Events.AnimateEnd = false;
                 Player.GetComponent<Animator>().enabled = false;
-                MissionGoing = false;
-                gameObject.GetComponent<Event1>().enabled = true;
+                script_for_Events.ScriptNumber = 1;
+                gameObject.GetComponent<Event1>().enabled = true;   //Активируется следующий скрипт
                 gameObject.GetComponent<Event0>().enabled = false;
             }
 

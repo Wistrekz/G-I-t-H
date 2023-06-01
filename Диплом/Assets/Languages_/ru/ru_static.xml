@@ -1,7 +1,0 @@
-<?xml version="1.0"  encoding="utf-8"?>
-<start>
-	<replic name="bucket*{KL::'}" lang="ru"> Привет </replic>
-	<replic name="Pol*{KL::'}" lang="ru"> Привет </replic>
-	<replic name="Pol*{KL::'}" lang="ru"> Привет21 </replic>
-	<replic name="Pol*{KL::'}" lang="en"> Привет32</replic>
-</start>

@@ -1,0 +1,6 @@
+<?xml version="1.0"  encoding="utf-8"?>
+<start>
+	<replic name="PuzzleThing">Подобран странный предмет</replic>
+	<replic name="PuzzleNote">Тут должна быть загадка</replic>
+	<replic name="SearchingItem">Сюда эту штуку нужно вставить</replic>
+</start>

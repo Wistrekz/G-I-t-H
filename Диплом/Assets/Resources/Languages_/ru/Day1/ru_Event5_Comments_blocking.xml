@@ -1,0 +1,7 @@
+<?xml version="1.0"  encoding="utf-8"?>
+<start>
+	<replic name="trigger_back">Так уходить бестактно</replic>
+	<replic name="trigger_jungle">Не думаю, что там что-то есть</replic>
+	<replic name="trigger_secret">Я пока не вижу там ничего</replic>
+	<replic name="trigger_lake">Там ничего нет. Там просто озеро</replic>
+</start>

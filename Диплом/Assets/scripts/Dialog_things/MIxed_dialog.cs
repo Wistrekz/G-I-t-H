@@ -14,29 +14,65 @@ public class MIxed_dialog : MonoBehaviour
     private bool inTrigger;
     private int number;
     private static string pathFor;
+    private static string Namereplic = "Non";
+    private static bool NeedName;
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
+        if (script_for_Events.DialogGoing && (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2")))
         {
-            Called_DisplayNextReplics();
+            Called_DisplayNextReplics(); //Для работы системы разговора нужно нажатие кнопки и работа спец. переменной
         }
+        Debug.Log(script_for_Events.DialogGoing);
     }
+
+    
 
     public static void Call_Cutscene_Dialog(string Path)
     {
         if (script_for_Events.DialogStart)
         {
+            Debug.Log("StartDialog");
             pathFor = Path;
-            FindObjectOfType<MIxed_dialog>().Called_StartDialog(Path);
+            script_for_Events.DialogStart = false;      //Этот метод может вызваться из других скриптов
+            script_for_Events.DialogGoing = true;
+            script_for_Events.DialogEnd = false;
+            Debug.Log(script_for_Events.DialogStart);
             script_for_Events.Cutscenegoing = true;
-            script_for_Events.DialogStart = false;
+            NeedName = false;
+            FindObjectOfType<MIxed_dialog>().Called_StartDialog(Path);
+        }
+
+    }
+    public static void Call_Cutscene_Dialog(string Path, string name)
+    {
+        if (script_for_Events.DialogStart)
+        {
+            Debug.Log("StartDialog");
+            pathFor = Path;
+            Namereplic = name;
+            script_for_Events.DialogStart = false;     //Этот метод может вызваться из других скриптов
+            // В отличии от предыдущего, этот даёт право и конкретное имя в файле преподнести
+            script_for_Events.DialogGoing = true;
+            script_for_Events.DialogEnd = false;
+            Debug.Log(script_for_Events.DialogStart);
+            script_for_Events.Cutscenegoing = true;
+            NeedName = true;
+            FindObjectOfType<MIxed_dialog>().Called_StartDialog(Path);
         }
 
     }
 
     public void Called_StartDialog(string Path)
     {
-        replics = Dictionary_files.GetLangDictionary(Path, false);
+        if(NeedName)
+        {
+            replics = Dictionary_files.GetLangDictionary(Path, Namereplic); //Запись в массив
+        }
+        else
+        {
+            replics = Dictionary_files.GetLangDictionary(Path, false);  //Запись в массив без имени
+        }
+        pathFor = Path;
         moving.CantMove = true;
         panel.SetActive(true);
         number = 0;
@@ -47,15 +83,13 @@ public class MIxed_dialog : MonoBehaviour
     {
         if (number == replics.Length)
         {
-            Invoke(nameof(Called_EndDialog), 0.1f);
+            Invoke(nameof(Called_EndDialog), 0.1f);  //Ожидание 0.1 секунды и выполняется последний метод
             return;
         }
         else
         {
-            string replic_name = Dictionary_files.GetLangDictionary_GetName(pathFor, replics[number]);
-            nametext.text = replic_name;
-            string replic = replics[number];
-            dialogtext.text = replic;
+            nametext.text = Dictionary_files.GetLangDictionary_GetName(pathFor, replics[number]); //Следующая реплика берётся из пути
+            dialogtext.text = replics[number];
             number++;
         }
         /*
@@ -68,11 +102,22 @@ public class MIxed_dialog : MonoBehaviour
         panel.SetActive(false);
         number = 0;
         moving.CantMove = false;
-        Debug.Log(moving.CantMove);
-        if (script_for_Events.Special_watcher)
-        {
-            script_for_Events.Cutscenegoing = false;
-        }
+        script_for_Events.DialogStart = false;      //Обнуление всех переменных
+        script_for_Events.DialogGoing = false;
+        script_for_Events.Cutscenegoing = false;
         script_for_Events.DialogEnd = true;
+    }
+
+    //Zapiski i ih text
+
+    public static void ShowNotesPanel(GameObject Panel, string Path, string NoteName)
+    {
+        Panel.SetActive(true);
+        Panel.GetComponentInChildren<Text>().text = Dictionary_files.GetLangDictionary(Path, NoteName)[0];       //Показ содержимого записок
+    }
+
+    public static void HideNotesPanel(GameObject Panel)
+    {
+        Panel.SetActive(false); //Скрыть записку
     }
 }

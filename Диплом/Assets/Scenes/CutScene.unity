@@ -259,7 +259,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 510172462}
-  - component: {fileID: 510172463}
   - component: {fileID: 510172464}
   m_Layer: 0
   m_Name: Cut_Player
@@ -282,24 +281,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &510172463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510172461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e05bc5dcfd6d2f24798037eebff8a4a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogtext: {fileID: 1913419997}
-  panel: {fileID: 633993753}
-  nametext: {fileID: 1202116310}
-  path: Assets/Languages_/ru/ru_startcutscene.xml
-  path_artists_info: Assets/Languages_/People_color.txt
-  animator: {fileID: 573328279}
 --- !u!114 &510172464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,7 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dm: {fileID: 0}
-  dCS: {fileID: 510172463}
+  dCS: {fileID: 573328282}
   IsMove: {fileID: 0}
   IsCutscene: 1
 --- !u!1 &511897246
@@ -472,12 +453,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e05bc5dcfd6d2f24798037eebff8a4a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogtext: {fileID: 0}
-  panel: {fileID: 0}
-  nametext: {fileID: 0}
-  path: 
-  path_artists_info: 
-  animator: {fileID: 0}
+  dialogtext: {fileID: 1913419997}
+  panel: {fileID: 633993753}
+  nametext: {fileID: 1202116310}
+  path: Assets/Resources/Languages_/ru/Static/ru_startcutscene.xml
+  animator: {fileID: 573328279}
 --- !u!1 &633993753
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,7 +754,7 @@ GameObject:
   - component: {fileID: 1202116311}
   - component: {fileID: 1202116310}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1197,7 +1177,7 @@ GameObject:
   - component: {fileID: 1913419998}
   - component: {fileID: 1913419997}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Speach
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

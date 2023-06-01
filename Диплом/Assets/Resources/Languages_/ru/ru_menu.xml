@@ -1,0 +1,11 @@
+<?xml version="1.0"  encoding="utf-8"?>
+<start>
+	<replic name="Lang">Язык</replic>
+	<replic name="Play_Text">Играть</replic>
+	<replic name="sett_Text">Настройки</replic>
+	<replic name="Exit_Text">Выход</replic>
+	<replic name="Lang_choice">Русский</replic>
+	<replic name="setIn_text">Применить</replic>
+	<replic name="Back_Text">Назад</replic>
+	<replic name="Resolution">Полный экран</replic>
+</start>

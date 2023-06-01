@@ -37,4 +37,47 @@ public class Appearance : MonoBehaviour
         }
     }
 
+    public void SetValueForGhost(int value)
+    {
+        if (value == 2)
+        {
+            Anim.SetInteger("ScreenState", 0);
+            return;
+        }
+        if (value == 1)
+        {
+            Anim.SetInteger("ScreenState", 0);
+            return;
+        }
+
+    }
+
+    public void SetValueForStar(int value)
+    {
+        if (value == 2)
+        {
+            Anim.SetInteger("StarState", 0);
+            return;
+        }
+        if (value == 1)
+        {
+            Anim.SetInteger("StarState", 0);
+            return;
+        }
+
+    }
+    public void SetValueForMissionText(int value)
+    {
+        if (value == 2)
+        {
+            Anim.SetInteger("TextState", 0);
+            return;
+        }
+        if (value == 1)
+        {
+            Anim.SetInteger("TextState", 0);
+            return;
+        }
+
+    }
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0"  encoding="utf-8"?>
+<start>
+	<replic name="Lang">Language</replic>
+	<replic name="Play_Text">Play</replic>
+	<replic name="sett_Text">Settings</replic>
+	<replic name="Exit_Text">Exit</replic>
+	<replic name="Lang_choice">English</replic>
+	<replic name="setIn_text">Accept</replic>
+	<replic name="Back_Text">Back</replic>
+	<replic name="Resolution">FullScreen</replic>
+</start>

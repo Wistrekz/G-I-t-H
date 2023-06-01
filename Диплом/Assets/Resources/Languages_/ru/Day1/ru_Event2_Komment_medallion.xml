@@ -1,0 +1,5 @@
+<?xml version="1.0"  encoding="utf-8"?>
+<start>
+	<replic name="Komment_IfExist">Вы взяли Медальон</replic>
+	<replic name="Komment_IfNotExist">Просто старая кровать</replic>
+</start>

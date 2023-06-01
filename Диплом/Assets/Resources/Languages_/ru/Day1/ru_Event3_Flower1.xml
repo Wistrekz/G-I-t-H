@@ -1,0 +1,8 @@
+<?xml version="1.0"  encoding="utf-8"?>
+<start>
+	<replic name="???">Эй, ты что здесь делаешь. Туда идти опасно</replic>
+	<replic name="Пол">Меня зовут Пол, кстати</replic>
+	<replic name="Ганс">А меня Ганс</replic>
+	<replic name="Пол">Ганс? Из Германии чтоли?</replic>
+	<replic name="Пол">Эй, ты же в том доме на холме живешь? У меня есть знакомая. Она про него тебе много расскажет</replic>
+</start>

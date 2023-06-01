@@ -1,0 +1,10 @@
+<?xml version="1.0"  encoding="utf-8"?>
+<start>
+	<replic name="Призрак">Здравствуй</replic>
+	<replic name="Ганс">Кто ты</replic>
+	<replic name="Призрак">Я житель этого дома</replic>
+	<replic name="Ганс">Ты и вправду призрак?</replic>
+	<replic name="Призрак">К сожалению, да. Я покинул этот мир по вине одного завистника</replic>
+	<replic name="Призрак">Который решил все его проблемы идут от меня</replic>
+	<replic name="Призрак">Он забрал дорогую мне вещь. Медальон. Верни его пожалуйста</replic>
+</start>

@@ -1,0 +1,9 @@
+<?xml version="1.0"  encoding="utf-8"?>
+<start>
+	<replic name="FindFirst">Тут что-то есть</replic>
+	<replic name="ReadFirst">Так это наверное то о чём говорится</replic>
+	<replic name="ThingDetected">Я вставил вещь в слот</replic>
+	<replic name="ThingDetected">Щелчок</replic>
+	<replic name="ThingDetected">Открылся другой отсек и оттуда выпал ключ</replic>
+	<replic name="ThingDetected">Ключ добавился в инвентарь</replic>
+</start>
