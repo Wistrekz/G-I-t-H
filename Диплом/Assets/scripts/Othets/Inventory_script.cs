@@ -55,9 +55,21 @@ public class Inventory_script : MonoBehaviour
                 {
                     if (Item_places[numberOfInventory].activeSelf)
                     {
-                        Info_Panel.SetActive(true);
-                        item_name.text = Inventory_storage.Player_inventory[numberOfInventory].name;
-                        item_info.text = Dictionary_files.GetLangDictionary(Inventory_storage.PathInformation, Inventory_storage.Player_inventory[numberOfInventory].name)[0];
+                        if(settings_methods.Language_mark_for_all == "ru")
+                        {
+                            string[] name = Inventory_storage.Player_inventory[numberOfInventory].name.Split('_');
+                            Info_Panel.SetActive(true);
+                            item_name.text = name[0];
+                            item_info.text = Dictionary_files.GetLangDictionary(Inventory_storage.PathInformation, name[0])[0];
+                        }
+                        if (settings_methods.Language_mark_for_all == "en")
+                        {
+                            string[] name = Inventory_storage.Player_inventory[numberOfInventory].name.Split('_');
+                            Info_Panel.SetActive(true);
+                            item_name.text = name[1];
+                            item_info.text = Dictionary_files.GetLangDictionary(Inventory_storage.PathInformation, name[1])[0];
+                        }
+                        
                     }
                     else // Если текущий элемент панели скрыт, то отображается "Пусто"
                     {
@@ -88,7 +100,10 @@ public class Inventory_script : MonoBehaviour
                 if (numberOfInventory < Item_places.Length - 1)
                 {
                     numberOfInventory++;
-                    Item_places[numberOfInventory].SetActive(true);
+                    if(Item_places[numberOfInventory].GetComponent<Image>().sprite != null)
+                    {
+                        Item_places[numberOfInventory].SetActive(true);
+                    }
                 }
             }
         }

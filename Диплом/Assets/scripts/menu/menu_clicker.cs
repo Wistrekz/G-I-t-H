@@ -11,7 +11,8 @@ public class menu_clicker : MonoBehaviour
 
 	public GameObject block;
 	public GameObject Set_block;
-	public static bool FullscreenStatus;
+	public static bool FullscreenStatus = true;
+	
 
     public void MouseOn()
 	{
@@ -61,11 +62,15 @@ public class menu_clicker : MonoBehaviour
     {
 		if(FullscreenStatus)
         {
-
-        }
+			Screen.fullScreen = FullscreenStatus;
+			Debug.Log(FullscreenStatus);
+			FullscreenStatus = false;
+		}
 		else
         {
-
+			Screen.fullScreen = FullscreenStatus;
+			Debug.Log(FullscreenStatus);
+			FullscreenStatus = true;
         }
     }
 }

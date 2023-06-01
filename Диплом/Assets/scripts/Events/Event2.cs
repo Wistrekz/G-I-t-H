@@ -11,7 +11,8 @@ public class Event2 : MonoBehaviour
     public GameObject Medallion;
     public GameObject PlaceforThoughts;
     public Animator BlackScreen;
-    public GameObject[] objects_forDestroy;
+    public GameObject[] objects_forDestroy, BordersTriggers;
+    public string PathToThoughts;
 
 
 
@@ -30,7 +31,7 @@ public class Event2 : MonoBehaviour
         script_for_Events.Trigger_for_SpecWatcher = TriggerForStart;
         script_for_Events.ScriptNumber = 2;
 
-        //Активируем все нужны объекты
+        //���������� ��� ����� �������
         foreach (GameObject i in objects_forDestroy)
         {
             i.SetActive(true);
@@ -48,7 +49,7 @@ public class Event2 : MonoBehaviour
         if (Completing == 0 && !script_for_Events.blackscreen)
         {
             Debug.Log("Awaiting");
-            //Доходим до специального триггера и говорим с сестрой.
+            //������� �� ������������ �������� � ������� � �������.
         }
         if (script_for_Events.Special_Watcher)
         {
@@ -65,7 +66,7 @@ public class Event2 : MonoBehaviour
                 {
 
                 }
-                MIxed_dialog.Call_Cutscene_Dialog(PathToDialog); //Если экран не тёмный то начинается диалог
+                MIxed_dialog.Call_Cutscene_Dialog(PathToDialog); //���� ����� �� ����� �� ���������� ������
             }
             if (script_for_Events.DialogEnd)
             {
@@ -77,7 +78,7 @@ public class Event2 : MonoBehaviour
         }
         if(Completing == 2)
         {
-            //MissionsShowing.UpdateMission(MissionsText); //Обновление миссии
+            //MissionsShowing.UpdateMission(MissionsText); //���������� ������
             script_for_Events.Trigger_for_Enter_SpecWatcher = TriggerForBed;
             Debug.Log(Inventory_storage.Player_inventory.Count);
             if (Cheats.CheckInventoryOnThisItem("Medallion"))
@@ -91,11 +92,11 @@ public class Event2 : MonoBehaviour
         if (Completing == 3)
         {
             Debug.Log("Event2 vipolnen");
-            foreach (GameObject i in objects_forDestroy)  //Уничтожение объектов
+            foreach (GameObject i in objects_forDestroy)  //����������� ��������
             {
                 Destroy(i);
             }
-            Debug.Log("Уничтожаются объекты");
+            Debug.Log("������������ �������");
             script_for_Events.ScriptNumber = 3;
             gameObject.GetComponent<Event3>().enabled = true;
             gameObject.GetComponent<Event2>().enabled = false;

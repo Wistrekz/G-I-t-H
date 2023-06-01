@@ -51,7 +51,26 @@ public class moving : MonoBehaviour
             rb.MovePosition(rb.position + moveInput * Time.fixedDeltaTime * speed); //позволяет "толкать" игрока в выбранную сторону
         }
 
-        if (gameObject.transform.position.y > y_coordiate)
+        if (gameObject.transform.position.y < y_coordiate) // В зависимости от направления движения будет выбран опред. спрайт
+        {
+            if (counter <= timing_frames && plus_minus)
+            {
+                gameObject.GetComponent<SpriteRenderer>().sprite = sprites[1];
+                status = 1;
+                counter++;
+                if (counter == timing_frames)
+                    plus_minus = !plus_minus;
+            }
+            else if (counter >= 0 && !plus_minus)
+            {
+                gameObject.GetComponent<SpriteRenderer>().sprite = sprites[2];
+                status = 2;
+                counter--;
+                if (counter == 0)
+                    plus_minus = !plus_minus;
+            }
+        }
+        else if (gameObject.transform.position.y > y_coordiate)
         {
             if (counter2 <= timing_frames && plus_minus2)
             {
@@ -70,90 +89,71 @@ public class moving : MonoBehaviour
                     plus_minus2 = !plus_minus2;
             }
         }
+        
 
-            if (gameObject.transform.position.y < y_coordiate) // В зависимости от направления движения будет выбран опред. спрайт
+
+
+        else if (gameObject.transform.position.x < x_coordiate)
+        {
+            if (counter3 <= timing_frames && plus_minus3)
             {
-                if (counter <= timing_frames && plus_minus)
-                {
-                    gameObject.GetComponent<SpriteRenderer>().sprite = sprites[1];
-                    status = 1;
-                    counter++;
-                    if (counter == timing_frames)
-                        plus_minus = !plus_minus;
-                }
-                else if (counter >= 0 && !plus_minus)
-                {
-                    gameObject.GetComponent<SpriteRenderer>().sprite = sprites[2];
-                    status = 2;
-                    counter--;
-                    if (counter == 0)
-                        plus_minus = !plus_minus;
-                }
+                gameObject.GetComponent<SpriteRenderer>().sprite = sprites[7];
+                status = 7;
+                counter3++;
+                if (counter3 == timing_frames)
+                    plus_minus3 = !plus_minus3;
             }
-
-            
-
-            if (gameObject.transform.position.x < x_coordiate)
+            else if (counter3 >= 0 && !plus_minus3)
             {
-                if (counter3 <= timing_frames && plus_minus3)
-                {
-                    gameObject.GetComponent<SpriteRenderer>().sprite = sprites[7];
-                    status = 7;
-                    counter3++;
-                    if (counter3 == timing_frames)
-                        plus_minus3 = !plus_minus3;
-                }
-                else if (counter3 >= 0 && !plus_minus3)
-                {
-                    gameObject.GetComponent<SpriteRenderer>().sprite = sprites[8];
-                    status = 8;
-                    counter3--;
-                    if (counter3 == 0)
-                        plus_minus3 = !plus_minus3;
-                }
+                gameObject.GetComponent<SpriteRenderer>().sprite = sprites[8];
+                status = 8;
+                counter3--;
+                if (counter3 == 0)
+                    plus_minus3 = !plus_minus3;
             }
+        }
 
-            if (gameObject.transform.position.x > x_coordiate)
+        else if (gameObject.transform.position.x > x_coordiate)
+        {
+            if (counter4 <= timing_frames && plus_minus4)
             {
-                if (counter4 <= timing_frames && plus_minus4)
-                {
-                    gameObject.GetComponent<SpriteRenderer>().sprite = sprites[10];
-                    status = 10;
-                    counter4++;
-                    if (counter4 == timing_frames)
-                        plus_minus4 = !plus_minus4;
-                }
-                else if (counter4 >= 0 && !plus_minus4)
-                {
-                    gameObject.GetComponent<SpriteRenderer>().sprite = sprites[11];
-                    status = 11;
-                    counter4--;
-                    if (counter4 == 0)
-                        plus_minus4 = !plus_minus4;
-                }
+                gameObject.GetComponent<SpriteRenderer>().sprite = sprites[10];
+                status = 10;
+                counter4++;
+                if (counter4 == timing_frames)
+                    plus_minus4 = !plus_minus4;
             }
+            else if (counter4 >= 0 && !plus_minus4)
+            {
+                gameObject.GetComponent<SpriteRenderer>().sprite = sprites[11];
+                status = 11;
+                counter4--;
+                if (counter4 == 0)
+                    plus_minus4 = !plus_minus4;
+            }
+        }
 
-            if (gameObject.transform.position.x == x_coordiate && gameObject.transform.position.y == y_coordiate)
+        if (gameObject.transform.position.x == x_coordiate && gameObject.transform.position.y == y_coordiate)
+        {
+            if (status == 1 || status == 2)
             {
-                if (status == 1 || status == 2)
-                {
-                    gameObject.GetComponent<SpriteRenderer>().sprite = sprites[0];
-                }
-                if (status == 4 || status == 5)
-                {
-                    gameObject.GetComponent<SpriteRenderer>().sprite = sprites[3];
-                }
-                if (status == 7 || status == 8)
-                {
-                    gameObject.GetComponent<SpriteRenderer>().sprite = sprites[6];
-                }
-                if (status == 10 || status == 11)
-                {
-                    gameObject.GetComponent<SpriteRenderer>().sprite = sprites[9];
-                }
+                gameObject.GetComponent<SpriteRenderer>().sprite = sprites[0];
             }
-            x_coordiate = gameObject.transform.position.x; //Это работает в зависи
-            y_coordiate = gameObject.transform.position.y;
+            if (status == 4 || status == 5)
+            {
+                gameObject.GetComponent<SpriteRenderer>().sprite = sprites[3];
+            }
+            if (status == 7 || status == 8)
+            {
+                gameObject.GetComponent<SpriteRenderer>().sprite = sprites[6];
+            }
+            if (status == 10 || status == 11)
+            {
+                gameObject.GetComponent<SpriteRenderer>().sprite = sprites[9];
+            }
+        }
+        x_coordiate = gameObject.transform.position.x;
+        y_coordiate = gameObject.transform.position.y;
     }
 
     public static void StopMoving()

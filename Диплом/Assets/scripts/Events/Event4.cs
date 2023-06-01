@@ -40,7 +40,7 @@ public class Event4 : MonoBehaviour
     {
         EvenT4();
         Debug.Log(Completing);
-        if(FirstFrame)
+        if (FirstFrame)
         {
             Player.GetComponent<SpriteRenderer>().sprite = Hans_Sprite;
         }
@@ -49,23 +49,23 @@ public class Event4 : MonoBehaviour
     private void EvenT4()
     {
         //Predistoriya - Rasskaz
-        if(Completing == 0)
+        if (Completing == 0)
         {
-            if(script_for_Events.blackscreen)
+            if (script_for_Events.blackscreen)
             {
                 BlackScreen.SetInteger("ScreenState", 1);
                 FirstFrame = true;
             }
-            if(!script_for_Events.blackscreen)
+            if (!script_for_Events.blackscreen)
             {
                 script_for_Events.DialogStart = true;
                 Completing++;
             }
         }
-        if(Completing == 1)
+        if (Completing == 1)
         {
             MIxed_dialog.Call_Cutscene_Dialog(Path_ForDialog[0]);
-            if(script_for_Events.DialogEnd)
+            if (script_for_Events.DialogEnd)
             {
                 script_for_Events.DialogEnd = false;
                 script_for_Events.DialogStart = true;
@@ -111,7 +111,7 @@ public class Event4 : MonoBehaviour
         if (Completing == 5)
         {
             BlackScreen.SetInteger("ScreenState", 2);
-            if(script_for_Events.blackscreen)
+            if (script_for_Events.blackscreen)
             {
                 script_for_Events.DialogStart = false;
                 Debug.Log("Event4 zakonchen");
@@ -124,10 +124,10 @@ public class Event4 : MonoBehaviour
                 script_for_Events.ScriptNumber = 5;
                 gameObject.GetComponent<Event5>().enabled = true;
                 gameObject.GetComponent<Event4>().enabled = false;
-                
+
             }
         }
-            
+
     }
 
     public IEnumerator Timer(float time)

@@ -184,6 +184,7 @@ public class Event5 : MonoBehaviour
                     if (script_for_Events.ThinkEnd)
                     {
                         MissionsShowing.UpdateMission();
+                        Cheats.Inventory_Delete("Cube");
                         Cheats.Inventory_Add("Ключ");
                         script_for_Events.ThinkEnd = false;
                         //MissionsShowing.UpdateMission(MissionsText); //Обновление миссии
